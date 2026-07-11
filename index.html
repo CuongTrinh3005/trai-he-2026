@@ -615,7 +615,7 @@
                             </div>
                             <div class="flex-grow grid grid-cols-12 gap-4 items-stretch mt-0.5">
                                 <div class="col-span-7 bg-slate-100 rounded-2xl border border-slate-300 shadow-inner relative overflow-hidden flex items-center justify-center p-1.5">
-                                    <img src="sơ đồ trại hè.png" id="camp-map-img" alt="Sơ đồ đất trại" class="object-contain max-h-full max-w-full rounded-xl transition-all duration-300" onerror="this.src='https://placehold.co/800x450/1e293b/ffffff?text=So+Do+Dat+Trai+He'"/>
+                                    <img src="sơ đồ trại hè.png" id="camp-map-img" alt="Sơ đồ đất trại" class="object-contain max-h-full max-w-full rounded-xl transition-all duration-300" onerror="handleImgError(this, 'so_do_dat_trai')"/>
                                     <div id="map-hotspots-overlay" class="absolute inset-0 z-20 pointer-events-none">
                                         <div id="group-stations" class="absolute inset-0 pointer-events-none">
                                             <!-- Ghịch mốc trạm ẩn danh bằng lá cờ vàng nhấp nháy 🚩 -->
@@ -629,13 +629,11 @@
                                         <div class="absolute top-[34.8%] left-[50.8%] transform -translate-x-1/2 bg-[#BCE8CD] px-1.5 py-0.5 rounded text-[10px] font-bold text-[#1E293B] pointer-events-none shadow-sm border border-[#A7DBB9]">Hội trường</div>
                                     </div>
                                 </div>
-                                <div class="col-span-5 flex flex-col justify-between bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-                                    <div class="flex-grow overflow-y-auto my-3 pr-1 min-h-[300px] flex flex-col justify-start">
-                                        <div id="map-detail-card" class="h-full flex flex-col items-center justify-center text-center p-2">
-                                            <div class="text-4xl text-amber-400 mb-2"><i class="fa-solid fa-flag-checkered"></i></div>
-                                            <h4 class="font-bold text-xs text-amber-600 uppercase tracking-wide mb-1">Hành Trình 6 Trạm Đức Tin</h4>
-                                            <p class="text-[10px] text-slate-500 leading-relaxed">Nhấp chuột trực tiếp vào các mốc <b>Lá cờ vàng 🚩</b> trên bản đồ để bắt đầu giải mã số trạm, ý nghĩa linh thánh và ban phụ trách.</p>
-                                        </div>
+                                <div class="col-span-5 flex flex-col bg-white rounded-2xl border border-slate-200 p-4 shadow-sm h-full overflow-hidden">
+                                    <div id="map-detail-card" class="h-full flex flex-col items-center justify-center text-center p-2">
+                                        <div class="text-4xl text-amber-400 mb-2"><i class="fa-solid fa-flag-checkered"></i></div>
+                                        <h4 class="font-bold text-xs text-amber-600 uppercase tracking-wide mb-1">Hành Trình 6 Trạm Đức Tin</h4>
+                                        <p class="text-[10px] text-slate-500 leading-relaxed">Nhấp chuột trực tiếp vào các mốc <b>Lá cờ vàng 🚩</b> trên bản đồ để bắt đầu giải mã số trạm, ý nghĩa linh thánh và ban phụ trách.</p>
                                     </div>
                                 </div>
                             </div>
@@ -959,30 +957,32 @@
             activeStationKey = stationKey;
             const isRevealed = revealedStations[stationKey] === true;
 
+            // Xóa bỏ hoàn toàn số thứ tự trạm (ví dụ: "Trạm 1: Đấng Ngôn Sứ..." thành "Trạm: Đấng Ngôn Sứ...") để bảo mật tuyệt đối
+            const displayTitle = data.title.replace(/Trạm \d+:/g, "Trạm:");
+
             const card = document.getElementById('map-detail-card');
+            card.className = "w-full h-full text-left flex flex-col justify-between";
             card.innerHTML = `
-                <div class="w-full text-left flex flex-col justify-between h-full">
-                    <div>
-                        <h3 class="font-serif font-extrabold text-[12px] text-slate-900 uppercase tracking-tight">${data.title}</h3>
-                        <p class="text-[9px] text-slate-400 mb-2 flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> Vị trí: ${data.location}</p>
-                        
-                        <!-- FIXED HEIGHT CONSTRAINT REGION FOR SIDEBAR IMAGE WITH LIGHTBOX SUPPORT -->
-                        <div onclick="openLightbox('${data.image}', '<i class=\\'fa-solid fa-flag-checkered text-amber-500\\'></i> Thực địa ${data.title}')" class="w-full h-24 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                            <img src="${data.image}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.outerHTML='<div class=\\'w-full h-full flex items-center justify-center bg-slate-50 text-slate-400 text-[10px] font-medium\\'><i class=\\'fa-regular fa-image mr-1\\'></i> Ảnh thực địa trạm</div>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] font-semibold gap-1">
-                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                <span>Xem toàn màn hình</span>
-                            </div>
+                <div class="flex flex-col flex-grow min-h-0">
+                    <h3 class="font-serif font-extrabold text-[12px] text-slate-900 uppercase tracking-tight shrink-0 mb-1">${displayTitle}</h3>
+                    <p class="text-[12px] sm:text-[14px] font-bold text-slate-900 mb-2.5 flex items-center gap-1.5 shrink-0"><i class="fa-solid fa-location-dot text-amber-500 text-[14px]"></i> Vị trí: <span class="text-slate-600 font-semibold">${data.location}</span></p>
+                    
+                    <!-- FULL HEIGHT STRETCH FOR SIDEBAR IMAGE -->
+                    <div onclick="openLightbox('${data.image}', '${displayTitle}')" class="w-full flex-grow h-0 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative min-h-[110px]">
+                        <img src="${data.image}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, '${stationKey}')">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] font-semibold gap-1">
+                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                            <span>Xem toàn màn hình</span>
                         </div>
                     </div>
-                    <div>
-                        <div class="grid grid-cols-2 gap-2 mb-2">
-                            <button onclick="instantRevealAll()" class="py-1.5 px-2 bg-emerald-600 text-white rounded-lg text-[10px] font-bold"><i class="fa-solid fa-bolt"></i> Hiện Trực Tiếp</button>
-                            <button onclick="openShufflerModal()" class="py-1.5 px-2 bg-amber-500 text-slate-950 rounded-lg text-[10px] font-bold"><i class="fa-solid fa-wand-magic-sparkles"></i> Trộn Số Hóa 🃏</button>
-                        </div>
-                        <div id="personnel-reveal-area" class="grid grid-cols-2 gap-1.5">
-                            ${renderPersonnelHTML(data.personnel, isRevealed)}
-                        </div>
+                </div>
+                <div class="shrink-0 mt-auto">
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                        <button onclick="instantRevealAll()" class="py-1.5 px-2 bg-emerald-600 text-white rounded-lg text-[10px] font-bold"><i class="fa-solid fa-bolt"></i> Hiện Trực Tiếp</button>
+                        <button onclick="openShufflerModal()" class="py-1.5 px-2 bg-amber-500 text-slate-950 rounded-lg text-[10px] font-bold"><i class="fa-solid fa-wand-magic-sparkles"></i> Trộn Số Hóa 🃏</button>
+                    </div>
+                    <div id="personnel-reveal-area" class="grid grid-cols-2 gap-1.5">
+                        ${renderPersonnelHTML(data.personnel, isRevealed)}
                     </div>
                 </div>
             `;
