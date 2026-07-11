@@ -37,18 +37,21 @@
         /* Standard 16:9 Presentation Frame with Auto Scale Capabilities */
         .slide-container {
             position: relative;
-            width: 100%;
-            max-width: 1200px;
             margin: 0 auto;
-            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .slide-frame {
-            width: 100%;
-            height: 100%;
+            width: 1280px;
+            height: 720px;
             background-color: var(--bg-canvas);
             color: var(--text-dark);
-            position: relative;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin: center center;
             overflow: hidden;
             box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
             border-radius: 18px;
@@ -189,7 +192,7 @@
 <body class="flex flex-col items-center justify-center min-h-screen p-4 select-none">
 
     <!-- MAIN INTERACTIVE WRAPPER -->
-    <div class="w-full max-w-[1550px] flex flex-col gap-4">
+    <div class="w-full max-w-[2560px] flex flex-col gap-4">
         
         <!-- HEADER CONTROL BAR -->
         <div class="flex flex-col sm:flex-row justify-between items-center bg-slate-900/85 border border-slate-800 p-4 rounded-2xl gap-4">
@@ -244,11 +247,11 @@
             </div>
 
             <!-- THE VIEWPORT -->
-            <div class="flex-grow flex flex-col items-center justify-center">
+            <div class="flex-grow flex flex-col items-center justify-center w-full overflow-hidden" id="presentation-wrapper">
                 <div class="slide-container">
                     <div class="slide-frame" id="presentation-viewport">
 
-                        <!-- SLIDE 1: INTRO TITLE -->
+                        <!-- SLIDE 1: INTRO TITLE (Elegant Dark Vibe) -->
                         <div class="slide active flex flex-col items-center justify-center text-center !p-12" id="slide-1" style="background: linear-gradient(135deg, #0B132B 0%, #1C2541 50%, #111827 100%); color: #FAF9F6;">
                             <div class="z-10 max-w-4xl flex flex-col items-center">
                                 <div class="inline-flex items-center gap-2 bg-amber-500 text-slate-950 font-bold text-xs uppercase px-5 py-2 rounded-full shadow-lg border border-amber-300/30 mb-6 tracking-widest">
@@ -933,12 +936,36 @@
         }
 
         function handleViewportScaling() {
-            const viewport = document.getElementById('presentation-viewport');
-            const container = viewport.parentElement;
-            const containerWidth = container.clientWidth;
-            container.style.height = `${containerWidth * (9 / 16)}px`;
+            const wrapper = document.getElementById('presentation-wrapper');
+            const container = document.querySelector('.slide-container');
+            const frame = document.getElementById('presentation-viewport');
+            
+            if (!wrapper || !container || !frame) return;
+
+            const isMobile = window.innerWidth < 1024;
+            let availableWidth = wrapper.clientWidth;
+            
+            // Tự động căn chỉnh chiều cao để Không Bao Giờ bị cuộn dọc trên TV
+            let availableHeight = isMobile ? (availableWidth * 9/16) : (window.innerHeight - 180); 
+            
+            let targetWidth = availableWidth;
+            let targetHeight = targetWidth * (9 / 16);
+            
+            // Căn chỉnh tỷ lệ khung hình 16:9 hoàn hảo
+            if (targetHeight > availableHeight) {
+                targetHeight = availableHeight;
+                targetWidth = targetHeight * (16 / 9);
+            }
+            
+            container.style.width = `${targetWidth}px`;
+            container.style.height = `${targetHeight}px`;
+            
+            // Kích hoạt Scale Engine biến đổi kích thước thật
+            const scale = targetWidth / 1280;
+            frame.style.transform = `translate(-50%, -50%) scale(${scale})`;
         }
 
+        // --- Global Lightbox System ---
         function openLightbox(src, captionHTML) {
             const lb = document.getElementById('global-lightbox');
             const img = document.getElementById('lightbox-img');
@@ -1120,7 +1147,7 @@
             const box = document.getElementById('confetti-container');
             box.innerHTML = '';
             const colors = ['#F59E0B', '#3B82F6', '#10B981', '#EF4444'];
-            for (let i = 0; i < 55; i++) {
+            for (let i = 0; i < 45; i++) {
                 const c = document.createElement('div');
                 c.className = 'confetti-piece';
                 c.style.left = `${Math.random() * 100}%`;
@@ -1130,7 +1157,14 @@
                 box.appendChild(c);
             }
         }
-        function requestFullscreen() { document.documentElement.requestFullscreen(); }
+
+        function requestFullscreen() { 
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            } else {
+                document.exitFullscreen();
+            }
+        }
     </script>
 </body>
 </html>
