@@ -398,10 +398,10 @@
                                     </div>
                                 </div>
                                 <!-- RIGHT HAND CONTENT AREA WITH FULL CONSTRAINT FIXED HEIGHT FOR IMAGE VIEW -->
-                                <div class="col-span-5 relative group cursor-pointer flex flex-col items-stretch justify-center bg-slate-100 border border-slate-200 rounded-2xl p-1.5 shadow-sm min-h-[260px] overflow-hidden" onclick="zoomCircleImage()">
+                                <div class="col-span-5 relative group cursor-pointer flex flex-col items-stretch justify-center bg-slate-100 border border-slate-200 rounded-2xl p-1.5 shadow-sm min-h-[260px] overflow-hidden" onclick="openLightbox('sinh-hoat-vong-tron.jpeg', 'Sinh Hoạt Vòng Tròn')">
                                     <div class="absolute inset-0 bg-slate-900/10 rounded-2xl group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
                                     <!-- FILE HÌNH ẢNH YÊU CẦU TỪ USER -->
-                                    <img src="sinh-hoat-vong-tron.jpeg" alt="Sinh Hoạt Vòng Tròn" class="w-full h-full object-cover rounded-xl transition-all duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Sinh+Hoat+Vong+Tron'"/>
+                                    <img src="sinh-hoat-vong-tron.jpeg" alt="Sinh Hoạt Vòng Tròn" class="w-full h-full object-cover rounded-xl transition-all duration-300" onerror="handleImgError(this, 'sinh_hoat_vong_tron')"/>
                                     <div class="absolute bottom-3 right-3 bg-slate-900/80 backdrop-blur text-white px-2.5 py-1 rounded-md text-[9px] font-bold flex items-center gap-1.5 z-20 shadow">
                                         <i class="fa-solid fa-magnifying-glass-plus text-amber-500"></i> Xem ảnh lớn
                                     </div>
@@ -426,7 +426,7 @@
                                     
                                     <!-- Khung ảnh Thi Đua Xoay Vòng (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('tro-choi-thi-dua-1.jpg', '<i class=\'fa-solid fa-gamepad text-amber-500\'></i> Trò Chơi Thi Đua Xoay Vòng Giữa Các Khối')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="tro-choi-thi-dua-1.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Tro+Choi+Thi+Dua'"/>
+                                        <img src="tro-choi-thi-dua-1.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_dua_xoay_vong')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -446,7 +446,7 @@
                                     
                                     <!-- Khung ảnh Dựng Lều (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('thi-dung-leu.jpeg', '<i class=\'fa-solid fa-campground text-blue-500\'></i> Kỹ Thuật Dựng Lều Đội Khẩn Cấp')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="thi-dung-leu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Thi+Dung+Leu+Doi'"/>
+                                        <img src="thi-dung-leu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_dung_leu')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -466,7 +466,7 @@
                                     
                                     <!-- Khung ảnh Team Building (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('tro-choi-thi-dua.jpg', '<i class=\'fa-solid fa-users-rays text-emerald-500\'></i> Hoạt Động Vận Động Team Building Tập Thể')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="tro-choi-thi-dua.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Team+Building+Sang'"/>
+                                        <img src="tro-choi-thi-dua.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'team_building')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -486,7 +486,7 @@
                                     
                                     <!-- Khung ảnh Thi Nấu Ăn (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('thi-nau-an.jpeg', '<i class=\'fa-solid fa-fire-burner text-red-500\'></i> Hội Thi Nấu Ăn Dã Ngoại Tự Lập')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="thi-nau-an.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Thi+Nau+An+Sang'"/>
+                                        <img src="thi-nau-an.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_nau_an')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -515,7 +515,7 @@
                                     
                                     <!-- Khung ảnh Viếng Chúa (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('vieng-chua.jpeg', '<i class=\'fa-solid fa-monument text-amber-500\'></i> Phút Viếng Chúa Thánh Thiêng Lắng Đọng')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="vieng-chua.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Vieng+Chua+Thanh+The'"/>
+                                        <img src="vieng-chua.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'vieng_chua')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -535,7 +535,7 @@
                                     
                                     <!-- Khung ảnh Cơm Trưa (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('com-trua-3.jpg', '<i class=\'fa-solid fa-fire-burner text-amber-500\'></i> Giờ Cơm Trưa Hàng Đội & Thưởng Thức Sản Phẩm Tự Nấu')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="com-trua-3.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Com+Trua+Hang+Doi'"/>
+                                        <img src="com-trua-3.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'com_trua')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -555,7 +555,7 @@
                                     
                                     <!-- Khung ảnh Dân Vũ (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('thi-dan-vu.jpeg', '<i class=\'fa-solid fa-music text-amber-500\'></i> Hội Thi Dân Vũ Sôi Động - Vũ Điệu Hiệp Hành')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="thi-dan-vu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Thi+Dan+Vu+Soi+Dong'"/>
+                                        <img src="thi-dan-vu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_dan_vu')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -587,7 +587,7 @@
                                 <div class="col-span-7 bg-white text-slate-900 rounded-2xl p-4 flex flex-col justify-between interactive-card relative group cursor-pointer" onclick="openLightbox('tro-choi-lon.jpeg', '<i class=\'fa-solid fa-mountain-sun text-amber-500\'></i> Hành Trình Đức Tin - Trò Chơi Lớn “Theo Bước Giêsu”')">
                                     <!-- Khung ảnh Trò Chơi Lớn thực tế - TỰ ĐỘNG CHIẾM TRỌN CHIỀU CAO CON LẠI CỦA THẺ -->
                                     <div class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 relative flex items-center justify-center shadow-inner">
-                                        <img src="tro-choi-lon.jpeg" alt="Trò Chơi Lớn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/800x450/1e293b/ffffff?text=Tro+Choi+Lon+Theo+Buoc+Giesu'"/>
+                                        <img src="tro-choi-lon.jpeg" alt="Trò Chơi Lớn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'tro_choi_lon')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[11px] font-semibold gap-1.5">
                                             <i class="fa-solid fa-magnifying-glass-plus text-lg text-amber-500"></i>
                                             <span>Phóng to xem chi tiết rõ nhất</span>
@@ -611,11 +611,11 @@
                         <div class="slide" id="slide-8">
                             <div class="slide-header">
                                 <h2 class="slide-title">Bản Đồ Đất Trại & Định Vị 6 Trạm</h2>
-                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest flex items-center gap-1.5"><i class="fa-solid fa-map-location-dot"></i>sơ đồ trại hè.png</span>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest flex items-center gap-1.5"><i class="fa-solid fa-map-location-dot"></i>sơ đồ trại hè.png</span>
                             </div>
                             <div class="flex-grow grid grid-cols-12 gap-4 items-stretch mt-0.5">
                                 <div class="col-span-7 bg-slate-100 rounded-2xl border border-slate-300 shadow-inner relative overflow-hidden flex items-center justify-center p-1.5">
-                                    <img src="sơ đồ trại hè.png" id="camp-map-img" alt="Sơ đồ đất trại" class="object-contain max-h-full max-w-full rounded-xl transition-all duration-300" onerror="handleImgError(this, 'so_do_dat_trai')"/>
+                                    <img src="sơ đồ trại hè.png" id="camp-map-img" alt="Sơ đồ đất trại" class="object-contain max-h-full max-w-full rounded-xl transition-all duration-300" onerror="handleImgError(this, 'so_do_dat_trai')"/>
                                     <div id="map-hotspots-overlay" class="absolute inset-0 z-20 pointer-events-none">
                                         <div id="group-stations" class="absolute inset-0 pointer-events-none">
                                             <!-- Ghịch mốc trạm ẩn danh bằng lá cờ vàng nhấp nháy 🚩 -->
@@ -827,22 +827,45 @@
     </div>
 
     <!-- DIGITAL SHUFFLER MODAL (SLIDE 8) -->
-    <div id="shuffler-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-slate-900 border-2 border-slate-700 p-8 rounded-3xl max-w-2xl w-full mx-4 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
-            <h3 class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-6 flex items-center gap-2 z-10"><i class="fa-solid fa-bolt"></i> Hệ Thống Giải Mã Nhân Sự</h3>
-            <div class="bg-slate-950 border border-slate-800 w-full rounded-2xl p-8 mb-8 relative flex items-center justify-center min-h-[120px] shadow-inner z-10">
-                <div id="shuffler-display" class="shuffler-text">ĐANG CHỜ LỆNH...</div>
+    <div id="shuffler-modal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4">
+        <div class="bg-slate-900 border-2 border-slate-700 p-6 sm:p-8 rounded-3xl max-w-2xl w-full shadow-2xl flex flex-col relative overflow-hidden">
+            <!-- Header Modal -->
+            <div class="text-center mb-5 z-10 border-b border-slate-800 pb-4">
+                <h3 class="text-amber-500 font-bold text-[10px] tracking-widest uppercase mb-2 flex items-center justify-center gap-2"><i class="fa-solid fa-bolt"></i> Hộp Trộn Nhân Sự Đích Tính</h3>
+                <h2 id="shuffler-station-name" class="font-serif text-lg sm:text-xl text-white font-bold uppercase tracking-wide">TRẠM ĐẤNG NGÔN SỨ...</h2>
             </div>
-            <div class="w-full flex gap-4 z-10">
-                <button onclick="startShuffleRevealAll()" id="btn-start-shuffle" class="flex-1 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-sm font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)] flex items-center justify-center gap-2"><i class="fa-solid fa-wand-magic-sparkles"></i> Trộn Số Hóa & Hiện Tất Cả</button>
-                <button onclick="instantRevealAll()" id="btn-instant-reveal" class="py-4 px-6 bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"><i class="fa-solid fa-bolt"></i> Hiện Trực Tiếp</button>
+
+            <!-- Màn hình LED -->
+            <div class="bg-slate-950 border border-slate-800 w-full rounded-2xl p-6 mb-5 relative flex flex-col items-center justify-center shadow-inner z-10 min-h-[110px]">
+                <div id="shuffler-display" class="shuffler-text text-amber-500 text-xl sm:text-2xl text-center mt-1">SẴN SÀNG QUAY</div>
+                <div id="shuffler-subtext" class="text-[9px] text-slate-500 font-bold tracking-widest uppercase mt-2 text-center">BẤM NÚT TRỘN NGẪU NHIÊN ĐỂ KHỞI ĐỘNG</div>
             </div>
+
+            <!-- Lưới hiển thị Thẻ Nhân Sự -->
+            <div class="w-full z-10 mb-6">
+                <h4 class="text-[10px] text-slate-400 font-bold uppercase mb-3 flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-500"></i> Nhân sự dự thuộc về trạm này:</h4>
+                <div id="modal-personnel-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <!-- Được đổ dữ liệu bằng JS -->
+                </div>
+            </div>
+
+            <!-- Bảng điều khiển -->
+            <div class="w-full flex flex-wrap sm:flex-nowrap gap-3 z-10 justify-center">
+                <button onclick="startShuffleRevealAll()" id="btn-start-shuffle" class="flex-1 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)] flex items-center justify-center gap-2"><i class="fa-solid fa-shuffle"></i> Trộn Ngẫu Nhiên</button>
+                <button onclick="instantRevealAll()" id="btn-instant-reveal" class="flex-1 py-3 bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border border-slate-700 hover:border-emerald-500"><i class="fa-solid fa-bolt"></i> Hiện Tất Cả</button>
+                <button onclick="closeShufflerModal()" class="py-3 px-6 bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border border-slate-700 hover:border-rose-500">Đóng</button>
+            </div>
+            <!-- Hiệu ứng pháo hoa -->
             <div id="confetti-container" class="absolute inset-0 pointer-events-none z-0"></div>
         </div>
     </div>
 
     <!-- SCRIPTS -->
     <script>
+        function handleImgError(element, key) {
+            element.src = 'https://placehold.co/600x400/1e293b/ffffff?text=' + key;
+        }
+
         let currentSlideIndex = 0;
         let activeStationKey = null;
         let revealedStations = {}; 
@@ -932,7 +955,6 @@
             container.style.height = `${containerWidth * (9 / 16)}px`;
         }
 
-        // --- Global Lightbox System ---
         function openLightbox(src, captionHTML) {
             const lb = document.getElementById('global-lightbox');
             const img = document.getElementById('lightbox-img');
@@ -951,13 +973,12 @@
             setTimeout(() => lb.classList.add('hidden'), 300);
         }
 
-        // --- Map & Shuffler Sidebar Logic ---
         function showMapDetail(stationKey) {
             const data = mapLocationsInfo[stationKey];
             activeStationKey = stationKey;
             const isRevealed = revealedStations[stationKey] === true;
 
-            // Xóa bỏ hoàn toàn số thứ tự trạm (ví dụ: "Trạm 1: Đấng Ngôn Sứ..." thành "Trạm: Đấng Ngôn Sứ...") để bảo mật tuyệt đối
+            // Lọc bỏ số thứ tự
             const displayTitle = data.title.replace(/Trạm \d+:/g, "Trạm:");
 
             const card = document.getElementById('map-detail-card');
@@ -967,8 +988,8 @@
                     <h3 class="font-serif font-extrabold text-[12px] text-slate-900 uppercase tracking-tight shrink-0 mb-1">${displayTitle}</h3>
                     <p class="text-[12px] sm:text-[14px] font-bold text-slate-900 mb-2.5 flex items-center gap-1.5 shrink-0"><i class="fa-solid fa-location-dot text-amber-500 text-[14px]"></i> Vị trí: <span class="text-slate-600 font-semibold">${data.location}</span></p>
                     
-                    <!-- FULL HEIGHT STRETCH FOR SIDEBAR IMAGE -->
-                    <div onclick="openLightbox('${data.image}', '${displayTitle}')" class="w-full flex-grow h-0 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative min-h-[110px]">
+                    <!-- ẢNH ĐƯỢC CHIA TỶ LỆ CHIỀU CAO FLEX-GROW NHƯNG KHÔNG ĐÈ XUỐNG -->
+                    <div onclick="openLightbox('${data.image}', '${displayTitle}')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative min-h-[110px]">
                         <img src="${data.image}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, '${stationKey}')">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] font-semibold gap-1">
                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
@@ -976,14 +997,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- NÚT BẤM DUY NHẤT -->
                 <div class="shrink-0 mt-auto">
-                    <div class="grid grid-cols-2 gap-2 mb-2">
-                        <button onclick="instantRevealAll()" class="py-1.5 px-2 bg-emerald-600 text-white rounded-lg text-[10px] font-bold"><i class="fa-solid fa-bolt"></i> Hiện Trực Tiếp</button>
-                        <button onclick="openShufflerModal()" class="py-1.5 px-2 bg-amber-500 text-slate-950 rounded-lg text-[10px] font-bold"><i class="fa-solid fa-wand-magic-sparkles"></i> Trộn Số Hóa 🃏</button>
-                    </div>
-                    <div id="personnel-reveal-area" class="grid grid-cols-2 gap-1.5">
-                        ${renderPersonnelHTML(data.personnel, isRevealed)}
-                    </div>
+                    <button onclick="openShufflerModal('${stationKey}')" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs sm:text-sm font-extrabold transition-all shadow-[0_4px_12px_rgba(245,158,11,0.2)] flex items-center justify-center gap-2 uppercase tracking-wide">
+                        <i class="fa-solid fa-users-viewfinder"></i> Danh sách GLV đứng trạm
+                    </button>
                 </div>
             `;
         }
@@ -991,49 +1009,102 @@
         function renderPersonnelHTML(personnel, isRevealed) {
             return personnel.map(p => {
                 const initials = isRevealed ? p.name.split(' ').slice(-2).map(n=>n[0]).join('') : '?';
-                const displayName = isRevealed ? p.name : 'Hồ Sơ Ẩn Danh';
-                const cardClass = isRevealed ? 'unlocked-card bg-slate-50 border-slate-200' : 'locked-card bg-slate-150 border-slate-200';
+                const displayName = isRevealed ? p.name : 'Hồ sơ ẩn danh';
                 
-                return `
-                    <div class="${cardClass} border p-1.5 rounded-lg flex items-center gap-1.5">
-                        <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-500 border flex items-center justify-center text-[9px] font-bold shrink-0">
-                            ${isRevealed ? initials : '<i class="fa-solid fa-lock text-[8px]"></i>'}
+                if (isRevealed) {
+                    return `
+                        <div class="unlocked-card bg-white border-2 border-emerald-500 p-2 rounded-xl flex items-center gap-3 shadow-md w-full">
+                            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 border border-amber-300 flex items-center justify-center text-[10px] font-black shrink-0">
+                                ${initials}
+                            </div>
+                            <div class="overflow-hidden text-left flex-grow">
+                                <h5 class="text-[11px] sm:text-xs font-extrabold text-slate-800 truncate w-full">${displayName}</h5>
+                                <span class="text-[8.5px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full mt-1 inline-block">${p.role}</span>
+                            </div>
                         </div>
-                        <div class="overflow-hidden">
-                            <h5 class="text-[9.5px] font-bold text-slate-800 truncate">${displayName}</h5>
-                            <span class="text-[8px] font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded-full mt-0.5 inline-block">${p.role}</span>
+                    `;
+                } else {
+                    return `
+                        <div class="locked-card bg-slate-800/80 border border-slate-700 p-2 rounded-xl flex items-center gap-3 w-full">
+                            <div class="w-8 h-8 rounded-full bg-slate-700 text-slate-500 flex items-center justify-center text-[10px] font-bold shrink-0">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <div class="overflow-hidden text-left flex-grow">
+                                <h5 class="text-[11px] sm:text-xs font-bold text-slate-500 truncate w-full">${displayName}</h5>
+                                <span class="text-[8.5px] font-semibold text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full mt-1 inline-block">${p.role}</span>
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
             }).join('');
         }
 
-        function openShufflerModal() {
+        function openShufflerModal(stationKey) {
+            activeStationKey = stationKey;
+            const data = mapLocationsInfo[stationKey];
+            const isRevealed = revealedStations[stationKey] === true;
+            
             const m = document.getElementById('shuffler-modal');
+            
+            document.getElementById('shuffler-station-name').innerText = data.title;
+            
+            const display = document.getElementById('shuffler-display');
+            const subtext = document.getElementById('shuffler-subtext');
+
+            if (isRevealed) {
+                display.innerText = "ĐÃ HOÀN TẤT TRỘN";
+                display.className = "shuffler-text text-center text-emerald-400 text-xl sm:text-2xl mt-1";
+                subtext.innerText = "DANH SÁCH BAN TRƯỞNG TRẠM ĐÍCH TÍNH";
+            } else {
+                display.innerText = "SẴN SÀNG QUAY";
+                display.className = "shuffler-text text-center text-amber-500 text-xl sm:text-2xl mt-1";
+                subtext.innerText = "BẤM NÚT TRỘN NGẪU NHIÊN ĐỂ KHỞI ĐỘNG";
+            }
+            
+            document.getElementById('btn-start-shuffle').disabled = isRevealed;
+            document.getElementById('btn-instant-reveal').disabled = isRevealed;
+            
+            document.getElementById('modal-personnel-grid').innerHTML = renderPersonnelHTML(data.personnel, isRevealed);
+            
             m.classList.remove('hidden');
-            document.getElementById('shuffler-display').innerText = "ĐANG CHỜ LỆNH...";
-            document.getElementById('shuffler-display').classList.remove('text-emerald-400');
-            document.getElementById('btn-start-shuffle').disabled = false;
-            document.getElementById('btn-instant-reveal').disabled = false;
             setTimeout(() => m.classList.add('opacity-100'), 10);
+        }
+
+        function closeShufflerModal() {
+            const m = document.getElementById('shuffler-modal');
+            m.classList.remove('opacity-100');
+            setTimeout(() => m.classList.add('hidden'), 300);
         }
 
         function instantRevealAll() {
             if (!activeStationKey) return;
             revealedStations[activeStationKey] = true;
-            showMapDetail(activeStationKey); 
+            const data = mapLocationsInfo[activeStationKey];
             
-            const m = document.getElementById('shuffler-modal');
-            if(!m.classList.contains('hidden')) {
-                m.classList.remove('opacity-100');
-                setTimeout(() => m.classList.add('hidden'), 300);
-            }
+            const display = document.getElementById('shuffler-display');
+            display.innerText = "ĐÃ HOÀN TẤT TRỘN";
+            display.classList.remove('text-amber-500');
+            display.classList.add('text-emerald-400');
+            
+            document.getElementById('shuffler-subtext').innerText = "DANH SÁCH BAN TRƯỞNG TRẠM ĐÍCH TÍNH";
+            
+            document.getElementById('btn-start-shuffle').disabled = true;
+            document.getElementById('btn-instant-reveal').disabled = true;
+
+            document.getElementById('modal-personnel-grid').innerHTML = renderPersonnelHTML(data.personnel, true);
+            triggerConfetti();
         }
 
         function startShuffleRevealAll() {
+            if (!activeStationKey) return;
             document.getElementById('btn-start-shuffle').disabled = true;
             document.getElementById('btn-instant-reveal').disabled = true;
             const display = document.getElementById('shuffler-display');
+            const subtext = document.getElementById('shuffler-subtext');
+            
+            display.classList.remove('text-emerald-400');
+            display.classList.add('text-amber-500');
+            subtext.innerText = "ĐANG TÌM KIẾM NHÂN SỰ ĐÍCH TÍNH...";
             
             let speed = 25;
             let iterations = 0;
@@ -1046,12 +1117,7 @@
                     speed += 8; 
                     setTimeout(shuffleStep, speed);
                 } else {
-                    display.innerText = "ĐÃ GIẢI MÃ ĐỒNG LOẠT!";
-                    display.classList.add('text-emerald-400');
-                    triggerConfetti();
-                    setTimeout(() => {
-                        instantRevealAll();
-                    }, 1800);
+                    instantRevealAll();
                 }
             }
             shuffleStep();
