@@ -398,10 +398,10 @@
                                     </div>
                                 </div>
                                 <!-- RIGHT HAND CONTENT AREA WITH FULL CONSTRAINT FIXED HEIGHT FOR IMAGE VIEW -->
-                                <div class="col-span-5 relative group cursor-pointer flex flex-col items-stretch justify-center bg-slate-100 border border-slate-200 rounded-2xl p-1.5 shadow-sm min-h-[260px] overflow-hidden" onclick="openLightbox('sinh-hoat-vong-tron-2.jpeg', '<i class=\'fa-solid fa-fire text-amber-500\'></i> Vòng Tròn Hiệp Hành - Trại Hè Giáo Xứ Thánh Giuse')">
+                                <div class="col-span-5 relative group cursor-pointer flex flex-col items-stretch justify-center bg-slate-100 border border-slate-200 rounded-2xl p-1.5 shadow-sm min-h-[260px] overflow-hidden" onclick="openLightbox('sinh-hoat-vong-tron.jpeg', '<i class=\'fa-solid fa-fire text-amber-500\'></i> Vòng Tròn Hiệp Hành - Trại Hè Giáo Xứ Thánh Giuse')">
                                     <div class="absolute inset-0 bg-slate-900/10 rounded-2xl group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
                                     <!-- FILE HÌNH ẢNH YÊU CẦU TỪ USER -->
-                                    <img src="sinh-hoat-vong-tron-2.jpeg" alt="Sinh Hoạt Vòng Tròn" class="w-full h-full object-cover rounded-xl transition-all duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Sinh+Hoat+Vong+Tron'"/>
+                                    <img src="sinh-hoat-vong-tron.jpeg" alt="Sinh Hoạt Vòng Tròn" class="w-full h-full object-cover rounded-xl transition-all duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Sinh+Hoat+Vong+Tron'"/>
                                     <div class="absolute bottom-3 right-3 bg-slate-900/80 backdrop-blur text-white px-2.5 py-1 rounded-md text-[9px] font-bold flex items-center gap-1.5 z-20 shadow">
                                         <i class="fa-solid fa-magnifying-glass-plus text-amber-500"></i> Xem ảnh lớn
                                     </div>
@@ -415,38 +415,85 @@
                                 <h2 class="slide-title">Hoạt Động Thi Đua & Team Building Sáng</h2>
                                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-dumbbell mr-1.5"></i>Thể Thao & Trí Tuệ</span>
                             </div>
-                            <div class="flex-grow grid grid-cols-4 gap-4 items-stretch mt-2">
-                                <div class="bg-white rounded-2xl border-t-4 border-amber-500 shadow-sm p-4 flex flex-col justify-between">
-                                    <div>
-                                        <div class="bg-amber-100 text-amber-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">08:00 - 09:30</div>
-                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Trò Chơi Thi Đua</h3>
-                                        <p class="text-[10px] text-slate-600 leading-relaxed">Các đội sẽ tham gia trò chơi thi đua do các khối chuẩn bị. Thời lượng: <span class="font-bold text-amber-600">20 phút/trò</span>.</p>
+                            <div class="flex-grow grid grid-cols-4 gap-4 items-stretch mt-1">
+                                <!-- Cột 1: Trò Chơi Thi Đua -->
+                                <div class="bg-white rounded-2xl border-t-4 border-amber-500 p-4 shadow-sm flex flex-col h-full interactive-card">
+                                    <div class="flex justify-between items-center mb-2 shrink-0">
+                                        <span class="bg-amber-100 text-amber-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">THI ĐUA</span>
+                                        <span class="text-[10px] text-amber-700 font-bold"><i class="fa-regular fa-clock mr-1"></i> 08:00 - 09:30</span>
                                     </div>
-                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Sinh Hoạt, Thi Đua, Kỹ Thuật</div>
+                                    <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Trò Chơi Thi Đua</h3>
+                                    
+                                    <!-- Khung ảnh Thi Đua Xoay Vòng (DYNAMIC FULL HEIGHT) -->
+                                    <div onclick="openLightbox('tro-choi-thi-dua-1.jpg', '<i class=\'fa-solid fa-gamepad text-amber-500\'></i> Trò Chơi Thi Đua Xoay Vòng Giữa Các Khối')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                        <img src="tro-choi-thi-dua-1.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Tro+Choi+Thi+Dua'"/>
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                                            <span>Xem toàn màn hình</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội sẽ tham gia trò chơi thi đua do các khối chuẩn bị. Thời lượng quy định: <span class="font-bold text-amber-600">20 phút/trò</span>.</p>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Khối Thêm Sức & Sống Đạo</div>
                                 </div>
-                                <div class="bg-white rounded-2xl border-t-4 border-blue-600 shadow-sm p-4 flex flex-col justify-between">
-                                    <div>
-                                        <div class="bg-blue-100 text-blue-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">09:30 - 09:45</div>
-                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Dựng Lều Đội</h3>
-                                        <p class="text-[10px] text-slate-600 leading-relaxed">Các đội nhanh chóng nhận dụng cụ và thi đua dựng lều khẩn cấp đạt tiêu chuẩn thẩm mỹ kỹ thuật.</p>
+
+                                <!-- Cột 2: Thi Dựng Lều -->
+                                <div class="bg-white rounded-2xl border-t-4 border-blue-600 p-4 shadow-sm flex flex-col h-full interactive-card">
+                                    <div class="flex justify-between items-center mb-2 shrink-0">
+                                        <span class="bg-blue-100 text-blue-900 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">DỰNG LỀU</span>
+                                        <span class="text-[10px] text-blue-900 font-bold"><i class="fa-regular fa-clock mr-1"></i> 09:30 - 09:45</span>
                                     </div>
-                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Khối Thêm Sức & Sống Đạo</div>
+                                    <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Dựng Lều Đội</h3>
+                                    
+                                    <!-- Khung ảnh Dựng Lều (DYNAMIC FULL HEIGHT) -->
+                                    <div onclick="openLightbox('thi-dung-leu.jpeg', '<i class=\'fa-solid fa-campground text-blue-500\'></i> Kỹ Thuật Dựng Lều Đội Khẩn Cấp')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                        <img src="thi-dung-leu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Thi+Dung+Leu+Doi'"/>
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                                            <span>Xem toàn màn hình</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội nhanh chóng nhận dụng cụ và thi đua dựng lều khẩn cấp đạt chuẩn thẩm mỹ kỹ thuật của ban thi đua.</p>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto"></div>
                                 </div>
-                                <div class="bg-white rounded-2xl border-t-4 border-emerald-500 shadow-sm p-4 flex flex-col justify-between">
-                                    <div>
-                                        <div class="bg-emerald-100 text-emerald-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">09:45 - 10:45</div>
-                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Team Building</h3>
-                                        <p class="text-[10px] text-slate-600 leading-relaxed">Tất cả hàng đội di chuyển tập trung về hội trường. Hòa mình tham gia trò chơi Team Building gắn kết lớn.</p>
+
+                                <!-- Cột 3: Team Building -->
+                                <div class="bg-white rounded-2xl border-t-4 border-emerald-500 p-4 shadow-sm flex flex-col h-full interactive-card">
+                                    <div class="flex justify-between items-center mb-2 shrink-0">
+                                        <span class="bg-emerald-10`0 text-emerald-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">VẬN ĐỘNG</span>
+                                        <span class="text-[10px] text-emerald-700 font-bold"><i class="fa-regular fa-clock mr-1"></i> 09:45 - 10:45</span>
                                     </div>
-                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Ban Điều Hành Chỉ Huy</div>
+                                    <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Team Building</h3>
+                                    
+                                    <!-- Khung ảnh Team Building (DYNAMIC FULL HEIGHT) -->
+                                    <div onclick="openLightbox('tro-choi-thi-dua.jpg', '<i class=\'fa-solid fa-users-rays text-emerald-500\'></i> Hoạt Động Vận Động Team Building Tập Thể')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                        <img src="tro-choi-thi-dua.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Team+Building+Sang'"/>
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                                            <span>Xem toàn màn hình</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Tất cả hàng đội di chuyển tập trung về hội trường. Hòa mình tham gia trò chơi Team Building gắn kết lớn đầy sôi động.</p>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Ban Thi Đua</div>
                                 </div>
-                                <div class="bg-white rounded-2xl border-t-4 border-red-500 shadow-sm p-4 flex flex-col justify-between">
-                                    <div>
-                                        <div class="bg-red-100 text-red-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">10:45 - 11:30</div>
-                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Thi Nấu Ăn</h3>
-                                        <p class="text-[10px] text-slate-600 leading-relaxed">Các đội tập trung chuẩn bị bếp lửa dã ngoại, thực hiện hội thi nấu ăn tự lập mang bản sắc đồng đội.</p>
+
+                                <!-- Cột 4: Thi Nấu Ăn -->
+                                <div class="bg-white rounded-2xl border-t-4 border-red-500 p-4 shadow-sm flex flex-col h-full interactive-card">
+                                    <div class="flex justify-between items-center mb-2 shrink-0">
+                                        <span class="bg-red-100 text-red-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">NẤU ĂN</span>
+                                        <span class="text-[10px] text-red-700 font-bold"><i class="fa-regular fa-clock mr-1"></i> 10:45 - 11:30</span>
                                     </div>
-                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Ban Tổ Chức & Thi Đua</div>
+                                    <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Thi Nấu Ăn</h3>
+                                    
+                                    <!-- Khung ảnh Thi Nấu Ăn (DYNAMIC FULL HEIGHT) -->
+                                    <div onclick="openLightbox('thi-nau-an.jpeg', '<i class=\'fa-solid fa-fire-burner text-red-500\'></i> Hội Thi Nấu Ăn Dã Ngoại Tự Lập')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                        <img src="thi-nau-an.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Thi+Nau+An+Sang'"/>
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                                            <span>Xem toàn màn hình</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội tập trung chuẩn bị bếp lửa dã ngoại, thực hiện hội thi nấu ăn tự lập mang bản sắc đồng đội khéo léo.</p>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Ban Tổ Chức & Thi Đua</div>
                                 </div>
                             </div>
                         </div>
@@ -487,8 +534,8 @@
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Cơm Trưa Hàng Đội</h3>
                                     
                                     <!-- Khung ảnh Cơm Trưa (DYNAMIC FULL HEIGHT) -->
-                                    <div onclick="openLightbox('thi-nau-an.jpeg', '<i class=\'fa-solid fa-fire-burner text-amber-500\'></i> Giờ Cơm Trưa Hàng Đội & Thưởng Thức Sản Phẩm Tự Nấu')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="thi-nau-an.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Com+Trua+Hang+Doi'"/>
+                                    <div onclick="openLightbox('com-trua-3.jpg', '<i class=\'fa-solid fa-fire-burner text-amber-500\'></i> Giờ Cơm Trưa Hàng Đội & Thưởng Thức Sản Phẩm Tự Nấu')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                        <img src="com-trua-3.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Com+Trua+Hang+Doi'"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
@@ -507,8 +554,8 @@
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Thi Dân Vũ</h3>
                                     
                                     <!-- Khung ảnh Dân Vũ (DYNAMIC FULL HEIGHT) -->
-                                    <div onclick="openLightbox('dan-vu.jpeg', '<i class=\'fa-solid fa-music text-amber-500\'></i> Hội Thi Dân Vũ Sôi Động - Vũ Điệu Hiệp Hành')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
-                                        <img src="dan-vu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Thi+Dan+Vu+Soi+Dong'"/>
+                                    <div onclick="openLightbox('thi-dan-vu.jpeg', '<i class=\'fa-solid fa-music text-amber-500\'></i> Hội Thi Dân Vũ Sôi Động - Vũ Điệu Hiệp Hành')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                        <img src="thi-dan-vu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Thi+Dan+Vu+Soi+Dong'"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
                                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                                             <span>Xem toàn màn hình</span>
