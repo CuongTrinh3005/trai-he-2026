@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương Trình Trại Hè Hiệp Hành IV - Theo Bước Giêsu</title>
+    <!-- Tailwind CSS for high-fidelity UI styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for professional academic & dynamic look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght=0,300;0,400;0,700;1,300&family=Montserrat:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for sharp vector icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-navy: #1E3A8A;
+            --primary-light: #3B82F6;
+            --accent-gold: #F59E0B;
+            --bg-canvas: #FAF9F6; /* Premium light warm background */
+            --text-dark: #1E293B;
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0F172A;
+            color: #E2E8F0;
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Standard 16:9 Presentation Frame with Auto Scale Capabilities */
+        .slide-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        .slide-frame {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-canvas);
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Presentation Slide Transitions */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 35px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            opacity: 0;
+            transform: scale(0.97) translateX(30px);
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            background: var(--bg-canvas);
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        /* Background Watermarks & Graphic Gradients */
+        .slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 95% 5%, rgba(30, 58, 138, 0.04) 0%, transparent 45%),
+                radial-gradient(circle at 5% 95%, rgba(245, 158, 11, 0.04) 0%, transparent 45%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Elegant Presentation Title Style */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .slide-title {
+            font-family: 'Merriweather', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: -0.5px;
+        }
+
+        /* Micro-interactions & Graphic Cards */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .interactive-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.1);
+            border-color: var(--accent-gold);
+        }
+
+        /* Custom Campfire Animation */
+        @keyframes flame-pulse {
+            0%, 100% { transform: scale(1) rotate(-2deg); filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.6)); }
+            50% { transform: scale(1.08) rotate(2deg); filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.9)); }
+        }
+        .campfire-flame {
+            animation: flame-pulse 2s ease-in-out infinite;
+        }
+
+        /* Custom Timeline Connector Path Animation */
+        .animated-dash-line {
+            stroke-dasharray: 8, 8;
+            animation: dash 5s linear infinite;
+        }
+        @keyframes dash { to { stroke-dashoffset: -40; } }
+
+        /* Hotspot Map Pins Pulsing Effects */
+        @keyframes pulse-pin-amber {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.9); }
+            70% { transform: scale(1.2); box-shadow: 0 0 0 14px rgba(245, 158, 11, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+        .map-pulse-amber {
+            animation: pulse-pin-amber 1.8s infinite;
+        }
+
+        /* Digital LED Neon Shuffler Text FX */
+        .shuffler-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #F59E0B;
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+            letter-spacing: 1px;
+        }
+
+        /* Lock filter system for hidden personnel */
+        .locked-card {
+            filter: blur(3.5px) opacity(45%);
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+        .unlocked-card {
+            filter: none;
+            opacity: 1;
+            pointer-events: auto;
+            transition: all 0.4s ease;
+        }
+
+        /* Pure CSS Confetti Particle Effects */
+        @keyframes confetti-fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(450px) rotate(360deg); opacity: 0; }
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-gold);
+            animation: confetti-fall 2.5s ease-out forwards;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 select-none">
+
+    <!-- MAIN INTERACTIVE WRAPPER -->
+    <div class="w-full max-w-[1550px] flex flex-col gap-4">
+        
+        <!-- HEADER CONTROL BAR -->
+        <div class="flex flex-col sm:flex-row justify-between items-center bg-slate-900/85 border border-slate-800 p-4 rounded-2xl gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-amber-500 text-slate-950 p-2.5 rounded-xl font-bold flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-cross text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-bold text-lg tracking-wider text-amber-500 uppercase">Trại Hiệp Hành IV</h1>
+                        <span class="text-[10px] bg-blue-600/30 text-blue-400 font-extrabold px-2 py-0.5 rounded-full uppercase border border-blue-500/20">Bản Cập Nhật Mới</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Giáo xứ Thánh Giuse - Lịch Trình Chi Tiết & Vòng Quay Nhân Sự Trạm</p>
+                </div>
+            </div>
+
+            <!-- SEARCH & FULLSCREEN INTERACTION CONTROLS -->
+            <div class="flex items-center gap-3 flex-wrap justify-end">
+                <div class="relative w-48 sm:w-64">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </span>
+                    <input type="text" id="slide-search" placeholder="Tìm nội dung slide..." class="w-full pl-9 pr-3 py-1.5 bg-slate-800/80 border border-slate-700 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-amber-500 transition-colors" />
+                </div>
+                <button onclick="requestFullscreen()" class="bg-slate-800 hover:bg-amber-600 hover:text-slate-950 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all">
+                    <i class="fa-solid fa-expand"></i> Toàn Màn Hình
+                </button>
+            </div>
+        </div>
+
+        <!-- PRESENTATION SCREEN -->
+        <div class="flex flex-col lg:flex-row gap-5 items-stretch justify-center w-full">
+            
+            <!-- LEFT NAVIGATION OUTLINE -->
+            <div class="w-full lg:w-[320px] bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shrink-0 flex flex-col justify-between h-auto lg:h-[650px] shadow-2xl">
+                <div>
+                    <div class="flex justify-between items-center mb-3 pb-2 border-b border-slate-800">
+                        <h3 class="font-bold text-amber-500 text-xs tracking-widest uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-list-check"></i> Mục lục Slide
+                        </h3>
+                        <span class="text-xs bg-slate-800 text-amber-400 font-bold px-2 py-0.5 rounded-full" id="slide-counter-badge">01 / 13</span>
+                    </div>
+                    <div class="space-y-1.5 max-h-[300px] lg:max-h-[460px] overflow-y-auto pr-1" id="slide-outline">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-500 flex flex-col gap-1">
+                    <div class="flex justify-between">
+                        <span>Phím chuyển:</span>
+                        <span class="font-semibold text-slate-300"><kbd class="bg-slate-800 px-1 py-0.5 rounded">←</kbd> <kbd class="bg-slate-800 px-1 py-0.5 rounded">→</kbd></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THE VIEWPORT -->
+            <div class="flex-grow flex flex-col items-center justify-center">
+                <div class="slide-container">
+                    <div class="slide-frame" id="presentation-viewport">
+
+                        <!-- SLIDE 1: INTRO TITLE (Elegant Dark Vibe) -->
+                        <div class="slide active flex flex-col items-center justify-center text-center !p-12" id="slide-1" style="background: linear-gradient(135deg, #0B132B 0%, #1C2541 50%, #111827 100%); color: #FAF9F6;">
+                            <div class="z-10 max-w-4xl flex flex-col items-center">
+                                <div class="inline-flex items-center gap-2 bg-amber-500 text-slate-950 font-bold text-xs uppercase px-5 py-2 rounded-full shadow-lg border border-amber-300/30 mb-6 tracking-widest">
+                                    <i class="fa-solid fa-fire"></i> Thiếu Nhi Thánh Thể Việt Nam
+                                </div>
+                                <h1 class="font-serif text-5xl sm:text-6xl font-extrabold text-white tracking-wide leading-tight mb-2 drop-shadow-md">THEO BƯỚC GIÊSU</h1>
+                                <h2 class="font-serif text-xl sm:text-2xl text-amber-400 font-semibold mb-6 tracking-wider italic">“Mọi tín hữu như môn đệ rao giảng”</h2>
+                                <div class="w-24 h-1.5 bg-amber-500 rounded-full mb-8"></div>
+                                <p class="text-xs font-semibold tracking-widest text-slate-300 uppercase mb-4">Trại Hiệp Hành IV • Giáo xứ Thánh Giuse</p>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 2: PRE-CAMP ROADMAP -->
+                        <div class="slide" id="slide-2">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Lộ Trình Chuẩn Bị Tiền Trại Hè 2026</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-regular fa-calendar-check mr-1.5"></i>Công Tác Tiền Trại</span>
+                            </div>
+                            <div class="flex-grow flex flex-col justify-center relative">
+                                <div class="absolute top-[135px] left-12 right-12 h-4 z-0 pointer-events-none">
+                                    <svg class="w-full h-full" overflow="visible">
+                                        <line x1="0" y1="6" x2="100%" y2="6" stroke="#E2E8F0" stroke-width="4"></line>
+                                        <line x1="0" y1="6" x2="100%" y2="6" stroke="#3B82F6" stroke-width="4" class="animated-dash-line"></line>
+                                    </svg>
+                                </div>
+                                <div class="grid grid-cols-4 gap-4 relative z-10">
+                                    <div class="flex flex-col items-center text-center group">
+                                        <div class="text-[10px] font-extrabold text-amber-600 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full mb-3 shadow-sm uppercase">Chúa Nhật 05/07</div>
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-amber-500 flex items-center justify-center shadow-md"><i class="fa-solid fa-users text-amber-600 text-base"></i></div>
+                                        <div class="mt-4 bg-white border-t-4 border-amber-500 rounded-xl p-3 shadow-sm w-full min-h-[150px]">
+                                            <h3 class="font-bold text-slate-800 text-[11px] mb-1 uppercase">HỌP ĐỘI KHỞI ĐỘNG</h3>
+                                            <p class="text-[10px] text-slate-500 leading-relaxed">Thiếu nhi họp theo đội, chính thức gặp gỡ GLV đồng hành, bầu ban quản lý đội.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center text-center group">
+                                        <div class="text-[10px] font-extrabold text-blue-600 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full mb-3 shadow-sm uppercase">Tối Thứ 4 15/07</div>
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-blue-600 flex items-center justify-center shadow-md"><i class="fa-solid fa-person-military-pointing text-blue-600 text-base"></i></div>
+                                        <div class="mt-4 bg-white border-t-4 border-blue-600 rounded-xl p-3 shadow-sm w-full min-h-[150px]">
+                                            <h3 class="font-bold text-slate-800 text-[11px] mb-1 uppercase">NGHIÊM TẬP ĐỘI NGŨ</h3>
+                                            <p class="text-[10px] text-slate-500 leading-relaxed">Khẩu hiệu, hiệu lệnh tập hợp, các tư thế nghỉ - nghiêm - quay và xếp đội hình chỉnh tề.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center text-center group">
+                                        <div class="text-[10px] font-extrabold text-amber-600 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full mb-3 shadow-sm uppercase">Chúa Nhật 19/07</div>
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-amber-500 flex items-center justify-center shadow-md"><i class="fa-solid fa-tent text-amber-600 text-base"></i></div>
+                                        <div class="mt-4 bg-white border-t-4 border-amber-500 rounded-xl p-3 shadow-sm w-full min-h-[150px]">
+                                            <h3 class="font-bold text-slate-800 text-[11px] mb-1 uppercase">HỌC DỰNG LỀU TRẠI</h3>
+                                            <p class="text-[10px] text-slate-500 leading-relaxed">Huấn luyện kỹ năng dựng lều bạt thực tế, cách thắt các nút dây cơ bản nhanh chóng.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center text-center group">
+                                        <div class="text-[10px] font-extrabold text-blue-600 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full mb-3 shadow-sm uppercase">Chúa Nhật 02/08</div>
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-blue-600 flex items-center justify-center shadow-md"><i class="fa-solid fa-brain text-blue-600 text-base"></i></div>
+                                        <div class="mt-4 bg-white border-t-4 border-blue-600 rounded-xl p-3 shadow-sm w-full min-h-[150px]">
+                                            <h3 class="font-bold text-slate-800 text-[11px] mb-1 uppercase">HỌC GIẢI MẬT THƯ</h3>
+                                            <p class="text-[10px] text-slate-500 leading-relaxed">Hướng dẫn các phương pháp mật mã cơ bản chuẩn bị cho Hành Trình Đức Tin.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 3: GATHERING & MASS -->
+                        <div class="slide" id="slide-3">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Chuỗi Sự Kiện: Thánh Lễ & Tập Tập Trung Trại</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-hourglass-start mr-1.5"></i>Khởi Đầu Ngày Trại</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-3 gap-5 items-stretch mt-2">
+                                <div class="bg-gradient-to-b from-blue-900 to-slate-900 text-white rounded-2xl p-5 border-t-4 border-amber-500 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start mb-3">
+                                            <span class="bg-amber-500 text-slate-950 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">THỨ BẢY 15/08</span>
+                                            <span class="text-[11px] text-amber-300 font-bold"><i class="fa-regular fa-clock mr-1"></i> 18:00 - 19:00</span>
+                                        </div>
+                                        <h3 class="font-serif text-base font-bold text-amber-300 mb-2">Thánh Lễ Thay Chúa Nhật</h3>
+                                        <p class="text-[11px] text-slate-300 leading-relaxed">Dự lễ xin ơn bình an cho Trại hè Hiệp Hành IV. Toàn thể thiếu nhi và GLV tham gia đầy đủ.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white border-t-4 border-blue-900 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start mb-3">
+                                            <span class="bg-blue-100 text-blue-900 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">CHÚA NHẬT 16/08</span>
+                                            <span class="text-[11px] text-blue-900 font-bold"><i class="fa-regular fa-clock mr-1"></i> 05:30 - 05:45</span>
+                                        </div>
+                                        <h3 class="font-serif text-base font-bold text-blue-900 mb-2">Tập Trung & Điểm Danh</h3>
+                                        <p class="text-[11px] text-slate-600 leading-relaxed">Tập trung tại Gx. Thánh Giuse. Thực hiện điểm danh chi tiết từng hàng đội, sắp xếp hành trang.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white border-t-4 border-amber-500 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start mb-3">
+                                            <span class="bg-amber-100 text-amber-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">CHÚA NHẬT 16/08</span>
+                                            <span class="text-[11px] text-amber-600 font-bold"><i class="fa-regular fa-clock mr-1"></i> 05:45 - 06:00</span>
+                                        </div>
+                                        <h3 class="font-serif text-base font-bold text-amber-700 mb-2">Khai Mạc Trại Hè</h3>
+                                        <p class="text-[11px] text-slate-600 leading-relaxed">Nghi thức chào cờ Trại chính thức tại Giáo Xứ. Lắng nghe lời dặn dò ý lực sống từ Cha Chánh xứ.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 4: DEPARTURE & CAMP SETUP -->
+                        <div class="slide" id="slide-4">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Di Chuyển, Nhập Trại & Sinh Hoạt Vòng Tròn</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-truck-ramp-box mr-1.5"></i>Giai Đoạn Nhập Đất Trại</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-12 gap-5 items-stretch mt-1">
+                                <div class="col-span-7 flex flex-col justify-center space-y-3">
+                                    <div class="flex gap-3 p-3 bg-white rounded-xl shadow-sm border-l-4 border-blue-900 items-center">
+                                        <div class="bg-blue-100 text-blue-900 rounded-lg w-16 h-10 flex flex-col items-center justify-center shrink-0 font-extrabold">
+                                            <span class="text-[11px] leading-none">06:00</span>
+                                            <span class="text-[9px] text-blue-700 font-medium">06:30</span>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-bold text-xs text-blue-900 uppercase">Di Chuyển Đến Đất Trại</h4>
+                                            <p class="text-[10px] text-slate-500 leading-tight">Ăn sáng nhẹ và sinh hoạt tập thể sôi động trên xe di chuyển.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 p-3 bg-white rounded-xl shadow-sm border-l-4 border-amber-500 items-center">
+                                        <div class="bg-amber-100 text-amber-800 rounded-lg w-16 h-10 flex flex-col items-center justify-center shrink-0 font-extrabold">
+                                            <span class="text-[11px] leading-none">06:30</span>
+                                            <span class="text-[9px] text-amber-700 font-medium">07:30</span>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-bold text-xs text-amber-700 uppercase">Thủ Tục Nhập Trại</h4>
+                                            <p class="text-[10px] text-slate-500 leading-tight">Tập trung ổn định hàng ngũ, kiểm danh hàng đội. Thực hiện thử thách trò chơi nhập trại.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 p-3 bg-white rounded-xl shadow-sm border-l-4 border-emerald-600 items-center">
+                                        <div class="bg-emerald-100 text-emerald-800 rounded-lg w-16 h-10 flex flex-col items-center justify-center shrink-0 font-extrabold">
+                                            <span class="text-[11px] leading-none">07:30</span>
+                                            <span class="text-[9px] text-emerald-700 font-medium">08:00</span>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-bold text-xs text-emerald-700 uppercase">Sinh Hoạt Vòng Tròn & Ổn Định</h4>
+                                            <p class="text-[10px] text-slate-500 leading-tight">Ban Sinh Hoạt điều phối vòng tròn lớn để giải phóng năng lượng, phá băng và kết nối hàng ngũ.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- RIGHT HAND CONTENT AREA WITH FULL CONSTRAINT FIXED HEIGHT FOR IMAGE VIEW -->
+                                <div class="col-span-5 relative group cursor-pointer flex flex-col items-stretch justify-center bg-slate-100 border border-slate-200 rounded-2xl p-1.5 shadow-sm min-h-[260px] overflow-hidden" onclick="openLightbox('sinh-hoat-vong-tron.jpg', '<i class=\'fa-solid fa-fire text-amber-500\'></i> Vòng Tròn Hiệp Hành - Trại Hè Giáo Xứ Thánh Giuse')">
+                                    <div class="absolute inset-0 bg-slate-900/10 rounded-2xl group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
+                                    <!-- FILE HÌNH ẢNH YÊU CẦU TỪ USER -->
+                                    <img src="sinh-hoat-vong-tron.jpeg" alt="Sinh Hoạt Vòng Tròn" class="w-full h-full object-cover rounded-xl transition-all duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Sinh+Hoat+Vong+Tron'"/>
+                                    <div class="absolute bottom-3 right-3 bg-slate-900/80 backdrop-blur text-white px-2.5 py-1 rounded-md text-[9px] font-bold flex items-center gap-1.5 z-20 shadow">
+                                        <i class="fa-solid fa-magnifying-glass-plus text-amber-500"></i> Xem ảnh lớn
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 5: MORNING COMPETITIONS & TEAM BUILDING (LỊCH TRÌNH 4 CỘT) -->
+                        <div class="slide" id="slide-5">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Hoạt Động Thi Đua & Team Building Sáng</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-dumbbell mr-1.5"></i>Thể Thao & Trí Tuệ</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-4 gap-4 items-stretch mt-2">
+                                <div class="bg-white rounded-2xl border-t-4 border-amber-500 shadow-sm p-4 flex flex-col justify-between">
+                                    <div>
+                                        <div class="bg-amber-100 text-amber-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">08:00 - 09:30</div>
+                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Trò Chơi Thi Đua</h3>
+                                        <p class="text-[10px] text-slate-600 leading-relaxed">Các đội sẽ tham gia trò chơi thi đua do các khối chuẩn bị. Thời lượng: <span class="font-bold text-amber-600">20 phút/trò</span>.</p>
+                                    </div>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Sinh Hoạt, Thi Đua, Kỹ Thuật</div>
+                                </div>
+                                <div class="bg-white rounded-2xl border-t-4 border-blue-600 shadow-sm p-4 flex flex-col justify-between">
+                                    <div>
+                                        <div class="bg-blue-100 text-blue-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">09:30 - 09:45</div>
+                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Dựng Lều Đội</h3>
+                                        <p class="text-[10px] text-slate-600 leading-relaxed">Các đội nhanh chóng nhận dụng cụ và thi đua dựng lều khẩn cấp đạt tiêu chuẩn thẩm mỹ kỹ thuật.</p>
+                                    </div>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Khối Thêm Sức & Sống Đạo</div>
+                                </div>
+                                <div class="bg-white rounded-2xl border-t-4 border-emerald-500 shadow-sm p-4 flex flex-col justify-between">
+                                    <div>
+                                        <div class="bg-emerald-100 text-emerald-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">09:45 - 10:45</div>
+                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Team Building</h3>
+                                        <p class="text-[10px] text-slate-600 leading-relaxed">Tất cả hàng đội di chuyển tập trung về hội trường. Hòa mình tham gia trò chơi Team Building gắn kết lớn.</p>
+                                    </div>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Ban Điều Hành Chỉ Huy</div>
+                                </div>
+                                <div class="bg-white rounded-2xl border-t-4 border-red-500 shadow-sm p-4 flex flex-col justify-between">
+                                    <div>
+                                        <div class="bg-red-100 text-red-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full mb-2 text-center uppercase tracking-wide">10:45 - 11:30</div>
+                                        <h3 class="font-bold text-slate-800 text-[11px] mb-1.5 uppercase text-center">Thi Nấu Ăn</h3>
+                                        <p class="text-[10px] text-slate-600 leading-relaxed">Các đội tập trung chuẩn bị bếp lửa dã ngoại, thực hiện hội thi nấu ăn tự lập mang bản sắc đồng đội.</p>
+                                    </div>
+                                    <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center">Ban Tổ Chức & Thi Đua</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 6: DEVOTION, LUNCH & DANCE SHOW -->
+                        <div class="slide" id="slide-6">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Viếng Chúa, Sinh Hoạt Trưa & Thi Dân Vũ I</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-sun mr-1.5"></i>Giờ Nghỉ Trưa & Tinh Thần</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-12 gap-5 items-stretch mt-2">
+                                <div class="col-span-5 bg-blue-900/10 border border-blue-900/15 rounded-2xl p-5 flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif font-bold text-sm text-blue-900 mb-1 uppercase">Phút Viếng Chúa Thánh Thiêng</h3>
+                                        <p class="text-[10px] font-extrabold text-blue-900 mb-2 uppercase"><i class="fa-regular fa-clock mr-1"></i> 11:30 - 12:00</p>
+                                        <p class="text-[11px] text-slate-600 leading-relaxed">Giờ lắng đọng tâm hồn viếng Chúa Giêsu Thánh Thể. Kết hợp công bố kết quả thi đua đợt 1 và bốc thăm thứ tự thi Dân Vũ.</p>
+                                    </div>
+                                    <div class="bg-blue-900 text-white rounded-xl py-2 text-[9px] font-bold text-center uppercase tracking-wide">Ban Tổ Chức & Thi Đua</div>
+                                </div>
+                                <div class="col-span-7 flex flex-col justify-between space-y-3">
+                                    <div class="bg-white rounded-xl p-3 border-l-4 border-amber-500 flex items-center justify-between shadow-sm">
+                                        <div>
+                                            <h4 class="font-bold text-xs text-blue-900 uppercase">Cơm Trưa Hàng Đội (12:00 - 13:30)</h4>
+                                            <p class="text-[10px] text-slate-500">Dùng cơm trưa dã ngoại bằng chính sản phẩm tự nấu, thu dọn vệ sinh và nghỉ ngơi tại lều đội.</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-3 border-l-4 border-blue-900 flex items-center justify-between shadow-sm">
+                                        <div>
+                                            <h4 class="font-bold text-xs text-blue-900 uppercase">Hội Thi Dân Vũ Sôi Động I</h4>
+                                            <p class="text-[10px] text-slate-500">Khởi tranh các tiết mục vũ điệu dân vũ tập thể của các nhóm theo thứ tự bốc thăm.</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-slate-900 text-white rounded-xl p-3 border-l-4 border-red-500 flex items-center justify-between shadow-sm">
+                                        <div>
+                                            <h4 class="font-bold text-xs text-amber-400 uppercase">Thể Lệ Trò Chơi Lớn (13:30 - 13:45)</h4>
+                                            <p class="text-[10px] text-slate-300">Tập hợp ổn định chuẩn bị bước vào Hành Trình Đức Tin. Phổ biến luật chạy trạm và phát mật thư khởi động.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 7: FAITH JOURNEY OVERVIEW -->
+                        <div class="slide" id="slide-7" style="background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%); color: white;">
+                            <div class="slide-header !border-amber-500">
+                                <h2 class="slide-title !text-white">Hành Trình Đức Tin: “Theo Bước Giêsu”</h2>
+                                <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest"><i class="fa-solid fa-shoe-prints mr-1.5"></i>Trò Chơi Lớn Buổi Chiều</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-12 gap-5 items-center">
+                                <div class="col-span-7 space-y-4">
+                                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15">
+                                        <h3 class="font-serif text-base text-amber-400 font-bold mb-1">Khung Giờ Chinh Phục: 14:00 - 17:00</h3>
+                                        <p class="text-xs text-slate-300 leading-relaxed">Chương trình hành trình cốt lõi đưa các trại sinh vượt qua thử thách địa hình và trí tuệ mật thư để thấu hiểu chặng đường rao giảng của các ngôn sứ lớn Cựu Ước dẫn lối Tin Mừng.</p>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-3 text-[11px] text-slate-300">
+                                        <div class="flex gap-2 items-center"><i class="fa-solid fa-shield-halved text-amber-400"></i> Rèn luyện ý chí, tinh thần vượt khó</div>
+                                        <div class="flex gap-2 items-center"><i class="fa-solid fa-compass text-amber-400"></i> Giải mã mật thư & định hướng tọa độ</div>
+                                    </div>
+                                </div>
+                                <div class="col-span-5 bg-white text-slate-900 rounded-2xl p-5 text-center flex flex-col justify-between h-56">
+                                    <div class="text-3xl text-amber-500"><i class="fa-solid fa-mountain-sun"></i></div>
+                                    <h4 class="font-bold text-xs text-blue-900 uppercase">Hành Trình Gắn Kết</h4>
+                                    <p class="text-[10.5px] text-slate-600 leading-relaxed">Mô hình gồm <span class="font-bold text-amber-600">6 Trạm Thách Thức</span> đan cài Kỹ Năng nghiêm túc & Kiến Thức Kinh Thánh chuyên sâu.</p>
+                                    <div class="text-[9px] text-slate-400 font-bold uppercase border-t pt-2">Tổng Chỉ Huy: Ban Thi Đua</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 8: CAMP MAP & ZONING -->
+                        <div class="slide" id="slide-8">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Bản Đồ Đất Trại & Định Vị 6 Trạm</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest flex items-center gap-1.5"><i class="fa-solid fa-map-location-dot"></i>sơ đồ trại hè.png</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-12 gap-4 items-stretch mt-0.5">
+                                <div class="col-span-7 bg-slate-100 rounded-2xl border border-slate-300 shadow-inner relative overflow-hidden flex items-center justify-center p-1.5">
+                                    <img src="sơ đồ trại hè.png" id="camp-map-img" alt="Sơ đồ đất trại" class="object-contain max-h-full max-w-full rounded-xl transition-all duration-300" onerror="this.src='https://placehold.co/800x450/1e293b/ffffff?text=So+Do+Dat+Trai+He'"/>
+                                    <div id="map-hotspots-overlay" class="absolute inset-0 z-20 pointer-events-none">
+                                        <div id="group-stations" class="absolute inset-0 pointer-events-none">
+                                            <!-- Ghịch mốc trạm ẩn danh bằng lá cờ vàng nhấp nháy 🚩 -->
+                                            <button onclick="showMapDetail('tram1')" class="absolute pointer-events-auto top-[32%] left-[60%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
+                                            <button onclick="showMapDetail('tram2')" class="absolute pointer-events-auto top-[78%] left-[16%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
+                                            <button onclick="showMapDetail('tram3')" class="absolute pointer-events-auto top-[48%] left-[28%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
+                                            <button onclick="showMapDetail('tram4')" class="absolute pointer-events-auto top-[25%] left-[82%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
+                                            <button onclick="showMapDetail('tram5')" class="absolute pointer-events-auto top-[71%] left-[46%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
+                                            <button onclick="showMapDetail('tram6')" class="absolute pointer-events-auto top-[34%] left-[39%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
+                                        </div>
+                                        <div class="absolute top-[34.8%] left-[50.8%] transform -translate-x-1/2 bg-[#BCE8CD] px-1.5 py-0.5 rounded text-[10px] font-bold text-[#1E293B] pointer-events-none shadow-sm border border-[#A7DBB9]">Hội trường</div>
+                                    </div>
+                                </div>
+                                <div class="col-span-5 flex flex-col justify-between bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+                                    <div class="flex-grow overflow-y-auto my-3 pr-1 min-h-[300px] flex flex-col justify-start">
+                                        <div id="map-detail-card" class="h-full flex flex-col items-center justify-center text-center p-2">
+                                            <div class="text-4xl text-amber-400 mb-2"><i class="fa-solid fa-flag-checkered"></i></div>
+                                            <h4 class="font-bold text-xs text-amber-600 uppercase tracking-wide mb-1">Hành Trình 6 Trạm Đức Tin</h4>
+                                            <p class="text-[10px] text-slate-500 leading-relaxed">Nhấp chuột trực tiếp vào các mốc <b>Lá cờ vàng 🚩</b> trên bản đồ để bắt đầu giải mã số trạm, ý nghĩa linh thánh và ban phụ trách.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 9: FAITH STATIONS (1 - 3) -->
+                        <div class="slide" id="slide-9">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Các Trạm Hành Trình Đức Tin (Trạm 1 - 3)</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-map-pin mr-1.5"></i>Sơ Đồ Nhân Sự Trạm</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-3 gap-4 items-stretch mt-1">
+                                <div class="bg-white rounded-2xl border-t-4 border-blue-900 p-4 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif font-bold text-sm text-slate-800 mb-1">Đấng Ngôn Sứ ISAIA</h3>
+                                        <ul class="text-[10.5px] text-slate-700 space-y-1 mt-2">
+                                            <li><b>Trưởng Teresa Nguyễn Ánh Duyên</b> (Trạm Trưởng)</li>
+                                            <li><b>Trưởng Maria Nguyễn Trần Thuỳ Quyên</b> (Trạm Phó)</li>
+                                            <li>Trưởng Anna Võ Trần Yến Thi (Hỗ trợ)</li>
+                                            <li>Giuse Trần Đăng Khoa (Hỗ trợ)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl border-t-4 border-amber-500 p-4 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif font-bold text-sm text-slate-800 mb-1">Đấng Ngôn Sứ GIÊ-RÊ-MI-A</h3>
+                                        <ul class="text-[10.5px] text-slate-700 space-y-1 mt-2">
+                                            <li><b>Trưởng Maria Nguyễn Thị Vân</b> (Trạm Trưởng)</li>
+                                            <li><b>Trưởng Giuse Hồ Thanh Nghĩa</b> (Trạm Phó)</li>
+                                            <li>Trưởng Anna Nguyễn Thị Thanh Tâm (Hỗ trợ)</li>
+                                            <li>Trưởng Maria Trần Thiên An (Hỗ trợ)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl border-t-4 border-blue-900 p-4 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif font-bold text-sm text-slate-800 mb-1">Đấng Ngôn Sứ ÊLIA</h3>
+                                        <ul class="text-[10.5px] text-slate-700 space-y-1 mt-2">
+                                            <li><b>Trưởng Giuse Trần Ngọc Đan</b> (Trạm Trưởng)</li>
+                                            <li><b>Trưởng Đaminh Đặng Vũ Gia Phúc</b> (Trạm Phó)</li>
+                                            <li>Trưởng Maria Nguyễn Phạm Bảo Thy (Hỗ trợ)</li>
+                                            <li>Trưởng Anna Nguyễn Thị Quỳnh Như (Hỗ trợ)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 10: FAITH STATIONS (4 - 6) -->
+                        <div class="slide" id="slide-10">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Các Trạm Hành Trình Đức Tin (Trạm 4 - 6)</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-map-pin mr-1.5"></i>Sơ Đồ Nhân Sự Trạm</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-3 gap-4 items-stretch mt-1">
+                                <div class="bg-white rounded-2xl border-t-4 border-amber-500 p-4 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif font-bold text-sm text-slate-800 mb-1">Đấng Ngôn Sứ ĐA-NI-EN</h3>
+                                        <ul class="text-[10.5px] text-slate-700 space-y-1 mt-2">
+                                            <li><b>Trưởng Giuse Vũ Quốc Huy</b> (Trạm Trưởng)</li>
+                                            <li><b>Trưởng Maria Nguyễn Thị Ngọc Chi</b> (Trạm Phó)</li>
+                                            <li>Trưởng Thy (con chú Hiếu) (Hỗ trợ)</li>
+                                            <li>Trưởng Giuse Lê Minh Quân (Hỗ trợ)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl border-t-4 border-blue-900 p-4 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif font-bold text-sm text-slate-800 mb-1">Đấng Ngôn Sứ ÊZÊKIEL</h3>
+                                        <ul class="text-[10.5px] text-slate-700 space-y-1 mt-2">
+                                            <li><b>Trưởng Vinhsơn Vũ Văn Lâm</b> (Trạm Trưởng)</li>
+                                            <li><b>Trưởng Vinhsơn Trần Nhật Hào</b> (Trạm Phó)</li>
+                                            <li>Trưởng Maria Bùi Ngọc Quỳnh Như (Hỗ trợ)</li>
+                                            <li>Trưởng Monica Vũ Thị Thuỳ Linh (Hỗ trợ)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl border-t-4 border-amber-500 p-4 shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif font-bold text-sm text-slate-800 mb-1">Đấng Ngôn Sứ GIÔNA</h3>
+                                        <ul class="text-[10.5px] text-slate-700 space-y-1 mt-2">
+                                            <li><b>Trưởng Giuse Phạm Bùi Tuấn Vĩ</b> (Trạm Trưởng)</li>
+                                            <li><b>Trưởng Anna Ngô Thị Hương Loan</b> (Trạm Phó)</li>
+                                            <li>Trưởng Têrêsa Đỗ Hoàng Cẩm Ly (Hỗ trợ)</li>
+                                            <li>Trưởng Phêrô Trương Ngọc Đăng Khoa (Hỗ trợ)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 11: STATIONS RULES -->
+                        <div class="slide" id="slide-11">
+                            <div class="slide-header">
+                                <h2 class="slide-title">Lưu Ý Quan Trọng Khi Chạy Trạm</h2>
+                                <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i>Kỷ Luật & Tổ Chức</span>
+                            </div>
+                            <div class="flex-grow flex flex-col justify-center space-y-3">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="flex gap-3 p-3 bg-red-50 border border-red-200 rounded-xl">
+                                        <div class="text-red-500 text-lg"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-xs text-slate-800 uppercase">Khống chế thời gian</h4>
+                                            <p class="text-[10.5px] text-slate-600">Giữ đội tối đa 20 phút. Tuyệt đối không để xảy ra kẹt trạm dồn ứ hàng ngũ.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                                        <div class="text-amber-600 text-lg"><i class="fa-solid fa-users-viewfinder"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-xs text-slate-800 uppercase">Cơ chế đón đội linh hoạt</h4>
+                                            <p class="text-[10.5px] text-slate-600">Thiết lập sẵn mini-game phụ phòng khi cả 2 đội cùng cập trạm một thời điểm.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 12: FIRESIDE WORSHIP -->
+                        <div class="slide" id="slide-12" style="background: linear-gradient(to bottom, #111827 0%, #2D0F0F 50%, #0F172A 100%); color: white;">
+                            <div class="slide-header !border-amber-500">
+                                <h2 class="slide-title !text-white">Lửa Thiêng Thánh Thể & Sinh Hoạt Tối</h2>
+                                <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest"><i class="fa-solid fa-fire mr-1.5"></i>Đêm Lửa Trại Tâm Tình</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-12 gap-5 items-stretch mt-1">
+                                <div class="col-span-7 flex flex-col justify-center space-y-3">
+                                    <div class="bg-amber-500/10 border-l-4 border-amber-500 rounded-xl p-4">
+                                        <h4 class="font-bold text-xs text-white uppercase">Chương Trình Lửa Thiêng Thánh Thể (18:00 - 19:30)</h4>
+                                        <p class="text-[10px] text-slate-300 mt-1">Sinh hoạt tại trung tâm: diễn nguyện Kinh Thánh, đóng kịch, vũ điệu ý lực sống và phát nến tâm tình.</p>
+                                    </div>
+                                    <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                                        <h4 class="font-bold text-xs text-amber-400 uppercase">Tâm Tình Cầu Nguyện & Cảm Tạ (Tối Muộn)</h4>
+                                        <p class="text-[10px] text-slate-300">Nối vòng tay lớn quanh ánh lửa tàn, dâng tâm tình tạ ơn Chúa Giêsu sau ngày trại hiệp hành tốt đẹp.</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-5 bg-amber-950/20 border border-amber-500/20 rounded-2xl p-5 flex flex-col justify-between items-center text-center">
+                                    <div class="campfire-flame text-4xl text-amber-500"><i class="fa-solid fa-fire-burner"></i></div>
+                                    <p class="text-[10px] text-slate-300 leading-relaxed">Ánh lửa thiêng phục sinh sưởi ấm tâm hồn, biến mỗi trại sinh thành môn đệ sẵn sàng ra khơi loan báo Tin Mừng.</p>
+                                    <span class="text-[8.5px] text-slate-500 font-bold uppercase">Ban Phụng Vụ & Sinh Hoạt</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 13: CLOSING CEREMONY -->
+                        <div class="slide" id="slide-13" style="background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color: white;">
+                            <div class="slide-header !border-amber-500">
+                                <h2 class="slide-title !text-white">Bế Mạc Trại & Nghi Thức Sai Đi</h2>
+                                <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest"><i class="fa-solid fa-flag-checkered mr-1.5"></i>Kết Thúc & Sai Đi</span>
+                            </div>
+                            <div class="flex-grow grid grid-cols-12 gap-5 items-center mt-2">
+                                <div class="col-span-7 space-y-3">
+                                    <div class="flex gap-3 items-center">
+                                        <div class="bg-blue-600 text-white rounded-lg px-2 py-1 text-xs font-bold">19:30 - 20:00</div>
+                                        <div><h4 class="font-bold text-xs text-white uppercase">Di chuyển về Giáo xứ</h4></div>
+                                    </div>
+                                    <div class="flex gap-3 items-center">
+                                        <div class="bg-amber-500 text-slate-950 rounded-lg px-2 py-1 text-xs font-bold">20:00 - 20:30</div>
+                                        <div><h4 class="font-bold text-xs text-amber-400 uppercase">Lễ bế mạc & Trao thưởng</h4></div>
+                                    </div>
+                                </div>
+                                <div class="col-span-5 bg-white/10 border border-white/10 rounded-2xl p-5 text-center flex flex-col justify-between h-48">
+                                    <h4 class="font-serif font-bold text-xs text-white uppercase tracking-widest">RA KHƠI CÙNG GIÊSU</h4>
+                                    <p class="text-[10px] text-slate-300">Hành trình Hiệp Hành IV kết thúc tốt đẹp. Hẹn gặp lại các em trong các chặng đường rèn luyện sắp tới!</p>
+                                    <span class="bg-amber-500 text-slate-950 font-bold px-3 py-1 rounded-xl text-[9px] uppercase block">Ban Tổ Chức Thân Chào</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM TIMELINE PROGRESS AND CONTROLS -->
+        <div class="bg-slate-900/85 border border-slate-800 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <button onclick="navigateSlide(-1)" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center justify-center transition-colors"><i class="fa-solid fa-chevron-left"></i></button>
+                <span class="text-xs font-mono font-semibold text-slate-300" id="slide-index-label">01 / 13</span>
+                <button onclick="navigateSlide(1)" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center justify-center transition-colors"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="flex-grow px-2 w-full"><div class="h-2 bg-slate-800 rounded-full overflow-hidden flex" id="presentation-progress-track"></div></div>
+        </div>
+    </div>
+
+    <!-- GLOBAL LIGHTBOX FOR IMAGE PRESENTATION -->
+    <div id="global-lightbox" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center text-xl transition-colors z-50"><i class="fa-solid fa-xmark"></i></button>
+        <div class="w-full max-w-5xl aspect-video max-h-[85vh] flex items-center justify-center">
+            <img id="lightbox-img" src="" alt="Zoomed Image" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl"/>
+        </div>
+        <p id="lightbox-caption" class="text-xs text-slate-400 mt-4 font-semibold tracking-wider flex items-center gap-2"></p>
+    </div>
+
+    <!-- DIGITAL SHUFFLER MODAL (SLIDE 8) -->
+    <div id="shuffler-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-900 border-2 border-slate-700 p-8 rounded-3xl max-w-2xl w-full mx-4 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
+            <h3 class="text-amber-500 font-bold text-sm tracking-widest uppercase mb-6 flex items-center gap-2 z-10"><i class="fa-solid fa-bolt"></i> Hệ Thống Giải Mã Nhân Sự</h3>
+            <div class="bg-slate-950 border border-slate-800 w-full rounded-2xl p-8 mb-8 relative flex items-center justify-center min-h-[120px] shadow-inner z-10">
+                <div id="shuffler-display" class="shuffler-text">ĐANG CHỜ LỆNH...</div>
+            </div>
+            <div class="w-full flex gap-4 z-10">
+                <button onclick="startShuffleRevealAll()" id="btn-start-shuffle" class="flex-1 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-sm font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)] flex items-center justify-center gap-2"><i class="fa-solid fa-wand-magic-sparkles"></i> Trộn Số Hóa & Hiện Tất Cả</button>
+                <button onclick="instantRevealAll()" id="btn-instant-reveal" class="py-4 px-6 bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"><i class="fa-solid fa-bolt"></i> Hiện Trực Tiếp</button>
+            </div>
+            <div id="confetti-container" class="absolute inset-0 pointer-events-none z-0"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        const slidesData = [
+            { id: "slide-1", title: "Trang Bìa - Ý Lực Sống", type: "intro" },
+            { id: "slide-2", title: "Chuẩn Bị Tiền Trại Hè", type: "timeline" },
+            { id: "slide-3", title: "Thánh Lễ & Tập Trung", type: "morning" },
+            { id: "slide-4", title: "Nhập Trại & Vòng Tròn", type: "morning" },
+            { id: "slide-5", title: "Thi Đua & Team Building", type: "morning" },
+            { id: "slide-6", title: "Viếng Chúa & Thi Dân Vũ I", type: "afternoon" },
+            { id: "slide-7", title: "Trò Chơi Lớn: Theo Bước Giêsu", type: "journey" },
+            { id: "slide-8", title: "Sơ Đồ Đất Trại & 6 Trạm", type: "map" },
+            { id: "slide-9", title: "Nhân Sự Trạm (1 - 3)", type: "stations" },
+            { id: "slide-10", title: "Nhân Sự Trạm (4 - 6)", type: "stations" },
+            { id: "slide-11", title: "Lưu Ý Khi Chạy Trạm", type: "stations" },
+            { id: "slide-12", title: "Lửa Thiêng & Tâm Tình Tối", type: "night" },
+            { id: "slide-13", title: "Bế Mạc & Nghi Thức Sai Đi", type: "conclusion" }
+        ];
+
+        let currentSlideIndex = 0;
+        let activeStationKey = null;
+        let revealedStations = {}; 
+
+        const mapLocationsInfo = {
+            tram1: { 
+                title: "Trạm 1: Đấng Ngôn Sứ ISAIA", 
+                location: "Đối diện hội trường lớn", 
+                image: "tram1.jpg", 
+                symbol: "Sách Thánh Kinh Cuộn & Cành Than Hồng Rực Cháy (Thanh tẩy môi miệng loan báo Tin Mừng).",
+                desc: "Loan báo triều đại Đấng Emmanuel - Thiên Chúa ở cùng chúng ta. Trạm thử thách sự sẵn sàng của những tông đồ hăm hở dấn thân đi gieo hạt giống tốt lành.",
+                personnel: [
+                    { name: "Teresa Nguyễn Ánh Duyên", role: "Trạm Trưởng" }, 
+                    { name: "Maria Nguyễn Trần Thuỳ Quyên", role: "Trạm Phó" }, 
+                    { name: "Anna Võ Trần Yến Thi", role: "Hỗ trợ" }, 
+                    { name: "Giuse Trần Đăng Khoa", role: "Hỗ trợ" }
+                ] 
+            },
+            tram2: { 
+                title: "Trạm 2: Đấng Ngôn Sứ GIÊ-RÊ-MI-A", 
+                location: "Chỗ cây xanh bóng mát", 
+                image: "tram2.jpg", 
+                symbol: "Trái Tim Bằng Thịt & Bia Đá Khắc Giao Ước Mới tinh quyền của tình yêu trung thành.",
+                desc: "Lời mời gọi khắc ghi luật tình yêu của Thiên Chúa vào chính lòng mến sâu xa. Thử thách của Trạm hướng về tinh thần vượt khó và lòng trung tín hiệp hành vững chãi.",
+                personnel: [
+                    { name: "Maria Nguyễn Thị Vân", role: "Trạm Trưởng" }, 
+                    { name: "Giuse Hồ Thanh Nghĩa", role: "Trạm Phó" }, 
+                    { name: "Anna Nguyễn Thị Thanh Tâm", role: "Hỗ trợ" }, 
+                    { name: "Maria Trần Thiên An", role: "Hỗ trợ" }
+                ] 
+            },
+            tram3: { 
+                title: "Trạm 3: Đấng Ngôn Sứ ÊLIA", 
+                location: "Bên cạnh khu vực đất trại", 
+                image: "tram3.jpg", 
+                symbol: "Cỗ Xe Lửa Thiêng & Ngọn Lửa Chứng Nhân trung kiên thách thức tư tế giả Ba-an.",
+                desc: "Tuyên xưng Đức Tin một lòng thờ phượng duy nhất Thiên Chúa Hằng Sống. Đội ngũ trại sinh sẽ rèn luyện ý chí vượt qua các bài học kiến thức mật thư hiểm hóc.",
+                personnel: [
+                    { name: "Giuse Trần Ngọc Đan", role: "Trạm Trưởng" }, 
+                    { name: "Đaminh Đặng Vũ Gia Phúc", role: "Trạm Phó" }, 
+                    { name: "Maria Nguyễn Phạm Bảo Thy", role: "Hỗ trợ" }, 
+                    { name: "Anna Nguyễn Thị Quỳnh Như", role: "Hỗ trợ" }
+                ] 
+            },
+            tram4: { 
+                title: "Trạm 4: Đấng Ngôn Sứ ĐA-NI-EN", 
+                location: "Dưới chân đài Tượng Đức Mẹ", 
+                image: "tram4.jpg", 
+                symbol: "Lòng Can Đảm Trung Kiên & Những Chú Sư Tử Thuần Phục dưới bàn tay Chúa bảo vệ.",
+                desc: "Minh chứng niềm tin son sắt vượt qua hầm sư tử hiểm nguy. Trạm thử thách sự kiên vững và can trường làm chứng cho sự thiện của người Kitô hữu trẻ tuổi.",
+                personnel: [
+                    { name: "Giuse Vũ Quốc Huy", role: "Trạm Trưởng" }, 
+                    { name: "Maria Nguyễn Thị Ngọc Chi", role: "Trạm Phó" }, 
+                    { name: "Trưởng Thy", role: "Hỗ trợ" }, 
+                    { name: "Giuse Lê Minh Quân", role: "Hỗ trợ" }
+                ] 
+            },
+            tram5: { 
+                title: "Trạm 5: Đấng Ngôn Sứ ÊZÊKIEL", 
+                location: "Bên trái sân banh sinh hoạt", 
+                image: "tram5.jpg", 
+                symbol: "Thung Lũng Xương Khô Hồi Sinh mãnh liệt nhờ sức mạnh Thần Khí Thiên Chúa thổi vào.",
+                desc: "Niềm hy vọng tràn trề về sự đổi mới, tái sinh từ cõi chết dưới sức sống dạt dào của Chúa Thánh Thần. Trạm đề cao tinh thần đồng tâm hiệp lực tối đa.",
+                personnel: [
+                    { name: "Vinhsơn Vũ Văn Lâm", role: "Trạm Trưởng" }, 
+                    { name: "Vinhsơn Trần Nhật Hào", role: "Trạm Phó" }, 
+                    { name: "Maria Bùi Ngọc Quỳnh Như", role: "Hỗ trợ" }, 
+                    { name: "Monica Vũ Thị Thuỳ Linh", role: "Hỗ trợ" }
+                ] 
+            },
+            tram6: { 
+                title: "Trạm 6: Đấng Ngôn Sứ GIÔNA", 
+                location: "Bên hông nhà nguyện tĩnh lặng", 
+                image: "tram6.jpg", 
+                symbol: "Chú Cá Voi Đại Dương Khổng Lồ & Sứ Vụ kêu gọi sám hối quay về vùng đất Ninivê.",
+                desc: "Bản trường ca về sự sám hối chân thành và tình thương rộng mở vô bờ bến của Cha Nhân Từ. Trạm thử thách khả năng thích ứng linh hoạt và lòng nhiệt thành rao giảng.",
+                personnel: [
+                    { name: "Giuse Phạm Bùi Tuấn Vĩ", role: "Trạm Trưởng" }, 
+                    { name: "Anna Ngô Thị Hương Loan", role: "Trạm Phó" }, 
+                    { name: "Têrêsa Đỗ Hoàng Cẩm Ly", role: "Hỗ trợ" }, 
+                    { name: "Phêrô Trương Ngọc Đăng Khoa", role: "Hỗ trợ" }
+                ] 
+            }
+        };
+
+        const allPersonnelNames = [];
+        for (const key in mapLocationsInfo) {
+            mapLocationsInfo[key].personnel.forEach(p => allPersonnelNames.push(p.name));
+        }
+
+        window.onload = () => { 
+            renderOutline(); 
+            updateSlidesUI(); 
+            setupKeyboard(); 
+            window.addEventListener('resize', handleViewportScaling);
+            handleViewportScaling();
+        }
+
+        function renderOutline() {
+            const outline = document.getElementById('slide-outline');
+            outline.innerHTML = '';
+            slidesData.forEach((slide, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-2 rounded-xl text-[11px] flex items-center ${idx === currentSlideIndex ? 'bg-amber-500 text-slate-950 font-bold shadow-md' : 'text-slate-400 hover:bg-slate-800'}`;
+                btn.onclick = () => { currentSlideIndex = idx; updateSlidesUI(); };
+                btn.innerHTML = `<span class="opacity-60 mr-2">${String(idx+1).padStart(2,'0')}</span> ${slide.title}`;
+                outline.appendChild(btn);
+            });
+        }
+
+        function updateSlidesUI() {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById(slidesData[currentSlideIndex].id).classList.add('active');
+            document.getElementById('slide-counter-badge').innerText = `${String(currentSlideIndex+1).padStart(2,'0')} / ${String(slidesData.length).padStart(2,'0')}`;
+            document.getElementById('slide-index-label').innerText = `${String(currentSlideIndex+1).padStart(2,'0')} / ${String(slidesData.length).padStart(2,'0')}`;
+            
+            const progressTrack = document.getElementById('presentation-progress-track');
+            progressTrack.innerHTML = '';
+            slidesData.forEach((_, index) => {
+                const seg = document.createElement('div');
+                seg.className = `h-full flex-grow mx-[2px] rounded-full transition-all duration-300 ${index <= currentSlideIndex ? 'bg-amber-500' : 'bg-slate-700'}`;
+                progressTrack.appendChild(seg);
+            });
+            renderOutline();
+        }
+
+        function navigateSlide(dir) {
+            currentSlideIndex = Math.max(0, Math.min(slidesData.length - 1, currentSlideIndex + dir));
+            updateSlidesUI();
+        }
+
+        function setupKeyboard() {
+            document.addEventListener('keydown', e => {
+                if (e.key === 'ArrowRight' || e.key === 'Space') { e.preventDefault(); navigateSlide(1); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); navigateSlide(-1); }
+            });
+        }
+
+        function handleViewportScaling() {
+            const viewport = document.getElementById('presentation-viewport');
+            const container = viewport.parentElement;
+            const containerWidth = container.clientWidth;
+            container.style.height = `${containerWidth * (9 / 16)}px`;
+        }
+
+        // --- Global Lightbox System ---
+        function openLightbox(src, captionHTML) {
+            const lb = document.getElementById('global-lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            img.src = src;
+            img.onerror = function() {
+                this.src = 'https://placehold.co/1280x720/1e293b/ffffff?text=Anh+Thuc+Dia+Chua+Tai+Len';
+            };
+            caption.innerHTML = captionHTML || '';
+            lb.classList.remove('hidden');
+            setTimeout(() => lb.classList.add('opacity-100'), 10);
+        }
+        function closeLightbox() {
+            const lb = document.getElementById('global-lightbox');
+            lb.classList.remove('opacity-100');
+            setTimeout(() => lb.classList.add('hidden'), 300);
+        }
+
+        function showMapDetail(stationKey) {
+            const data = mapLocationsInfo[stationKey];
+            activeStationKey = stationKey;
+            const isRevealed = revealedStations[stationKey] === true;
+
+            const card = document.getElementById('map-detail-card');
+            card.innerHTML = `
+                <div class="w-full text-left flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-5 h-5 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-[10px]">${stationKey.replace('tram', '')}</span>
+                            <h3 class="font-serif font-extrabold text-[12px] text-slate-900 uppercase tracking-tight">${data.title}</h3>
+                        </div>
+                        <p class="text-[9px] text-slate-400 mb-2 flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> Vị trí: ${data.location}</p>
+                        
+                        <!-- CLICK TO ZOOM REAL IMAGE ON LIGHTBOX -->
+                        <div onclick="openLightbox('${data.image}', '<i class=\\'fa-solid fa-flag-checkered text-amber-500\\'></i> Thực địa ${data.title}')" class="w-full h-24 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                            <img src="${data.image}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="this.outerHTML='<div class=\\'w-full h-full flex items-center justify-center bg-slate-50 text-slate-400 text-[10px] font-medium\\'><i class=\\'fa-regular fa-image mr-1\\'></i> Ảnh thực địa trạm</div>'">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] font-semibold gap-1">
+                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                                <span>Xem toàn màn hình</span>
+                            </div>
+                        </div>
+
+                        <!-- Symbols & Purpose Boxes (No Loss of Information) -->
+                        <div class="bg-amber-500/5 border border-amber-500/10 rounded-lg p-2 mb-2 text-[10px]">
+                            <span class="font-bold text-amber-700 block mb-0.5"><i class="fa-solid fa-circle-info"></i> Nhận Biết:</span>
+                            <p class="text-slate-600 leading-tight">${data.symbol}</p>
+                        </div>
+                        <p class="text-[9.5px] text-slate-500 italic leading-tight mb-3">"${data.desc}"</p>
+                    </div>
+                    <div>
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <button onclick="instantRevealAll()" class="py-1.5 px-2 bg-emerald-600 text-white rounded-lg text-[10px] font-bold"><i class="fa-solid fa-bolt"></i> Hiện Trực Tiếp</button>
+                            <button onclick="openShufflerModal()" class="py-1.5 px-2 bg-amber-500 text-slate-950 rounded-lg text-[10px] font-bold"><i class="fa-solid fa-wand-magic-sparkles"></i> Trộn Số Hóa 🃏</button>
+                        </div>
+                        <div id="personnel-reveal-area" class="grid grid-cols-2 gap-1.5">
+                            ${renderPersonnelHTML(data.personnel, isRevealed)}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPersonnelHTML(personnel, isRevealed) {
+            return personnel.map(p => {
+                const initials = isRevealed ? p.name.split(' ').slice(-2).map(n=>n[0]).join('') : '?';
+                const displayName = isRevealed ? p.name : 'Trưởng Ẩn Danh';
+                const cardClass = isRevealed ? 'unlocked-card bg-slate-50 border-slate-200' : 'locked-card bg-slate-150 border-slate-200';
+                
+                return `
+                    <div class="${cardClass} border p-1.5 rounded-lg flex items-center gap-1.5">
+                        <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-500 border flex items-center justify-center text-[9px] font-bold shrink-0">
+                            ${isRevealed ? initials : '<i class="fa-solid fa-lock text-[8px]"></i>'}
+                        </div>
+                        <div class="overflow-hidden">
+                            <h5 class="text-[9.5px] font-bold text-slate-800 truncate">${displayName}</h5>
+                            <span class="text-[8px] font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded-full mt-0.5 inline-block">${p.role}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openShufflerModal() {
+            const m = document.getElementById('shuffler-modal');
+            m.classList.remove('hidden');
+            document.getElementById('shuffler-display').innerText = "ĐANG CHỜ LỆNH...";
+            document.getElementById('shuffler-display').classList.remove('text-emerald-400');
+            document.getElementById('btn-start-shuffle').disabled = false;
+            document.getElementById('btn-instant-reveal').disabled = false;
+            setTimeout(() => m.classList.add('opacity-100'), 10);
+        }
+
+        function instantRevealAll() {
+            if (!activeStationKey) return;
+            revealedStations[activeStationKey] = true;
+            showMapDetail(activeStationKey); 
+            
+            const m = document.getElementById('shuffler-modal');
+            if(!m.classList.contains('hidden')) {
+                m.classList.remove('opacity-100');
+                setTimeout(() => m.classList.add('hidden'), 300);
+            }
+        }
+
+        function startShuffleRevealAll() {
+            document.getElementById('btn-start-shuffle').disabled = true;
+            document.getElementById('btn-instant-reveal').disabled = true;
+            const display = document.getElementById('shuffler-display');
+            
+            let speed = 25;
+            let iterations = 0;
+            const maxIterations = 40;
+
+            function shuffleStep() {
+                display.innerText = allPersonnelNames[Math.floor(Math.random() * allPersonnelNames.length)];
+                iterations++;
+                if (iterations < maxIterations) {
+                    speed += 8; 
+                    setTimeout(shuffleStep, speed);
+                } else {
+                    display.innerText = "ĐÃ GIẢI MÃ ĐỒNG LOẠT!";
+                    display.classList.add('text-emerald-400');
+                    triggerConfetti();
+                    setTimeout(() => {
+                        instantRevealAll();
+                    }, 1800);
+                }
+            }
+            shuffleStep();
+        }
+
+        function triggerConfetti() {
+            const box = document.getElementById('confetti-container');
+            box.innerHTML = '';
+            const colors = ['#F59E0B', '#3B82F6', '#10B981', '#EF4444'];
+            for (let i = 0; i < 45; i++) {
+                const c = document.createElement('div');
+                c.className = 'confetti-piece';
+                c.style.left = `${Math.random() * 100}%`;
+                c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                c.style.animationDelay = `${Math.random() * 0.4}s`;
+                c.style.animationDuration = `${1.5 + Math.random() * 1}s`;
+                box.appendChild(c);
+            }
+        }
+        function requestFullscreen() { document.documentElement.requestFullscreen(); }
+    </script>
+</body>
+</html>
