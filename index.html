@@ -18,7 +18,7 @@
             --primary-navy: #1E3A8A;
             --primary-light: #3B82F6;
             --accent-gold: #F59E0B;
-            --bg-canvas: #FAF9F6; /* Premium light warm background */
+            --bg-canvas: #FAF9F6;
             --text-dark: #1E293B;
             --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -96,7 +96,6 @@
             pointer-events: none;
         }
 
-        /* Elegant Presentation Title Style */
         .slide-header {
             display: flex;
             justify-content: space-between;
@@ -116,7 +115,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Micro-interactions & Graphic Cards */
         .interactive-card {
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
@@ -126,7 +124,6 @@
             border-color: var(--accent-gold);
         }
 
-        /* Custom Campfire Animation */
         @keyframes flame-pulse {
             0%, 100% { transform: scale(1) rotate(-2deg); filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.6)); }
             50% { transform: scale(1.08) rotate(2deg); filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.9)); }
@@ -135,14 +132,12 @@
             animation: flame-pulse 2s ease-in-out infinite;
         }
 
-        /* Custom Timeline Connector Path Animation */
         .animated-dash-line {
             stroke-dasharray: 8, 8;
             animation: dash 5s linear infinite;
         }
         @keyframes dash { to { stroke-dashoffset: -40; } }
 
-        /* Hotspot Map Pins Pulsing Effects */
         @keyframes pulse-pin-amber {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.9); }
             70% { transform: scale(1.2); box-shadow: 0 0 0 14px rgba(245, 158, 11, 0); }
@@ -176,7 +171,6 @@
             transition: all 0.4s ease;
         }
 
-        /* Pure CSS Confetti Particle Effects */
         @keyframes confetti-fall {
             0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(450px) rotate(360deg); opacity: 0; }
@@ -212,7 +206,6 @@
                 </div>
             </div>
 
-            <!-- SEARCH & FULLSCREEN INTERACTION CONTROLS -->
             <div class="flex items-center gap-3 flex-wrap justify-end">
                 <div class="relative w-48 sm:w-64">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
@@ -255,7 +248,7 @@
                 <div class="slide-container">
                     <div class="slide-frame" id="presentation-viewport">
 
-                        <!-- SLIDE 1: INTRO TITLE (Elegant Dark Vibe) -->
+                        <!-- SLIDE 1: INTRO TITLE -->
                         <div class="slide active flex flex-col items-center justify-center text-center !p-12" id="slide-1" style="background: linear-gradient(135deg, #0B132B 0%, #1C2541 50%, #111827 100%); color: #FAF9F6;">
                             <div class="z-10 max-w-4xl flex flex-col items-center">
                                 <div class="inline-flex items-center gap-2 bg-amber-500 text-slate-950 font-bold text-xs uppercase px-5 py-2 rounded-full shadow-lg border border-amber-300/30 mb-6 tracking-widest">
@@ -397,10 +390,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- RIGHT HAND CONTENT AREA WITH FULL CONSTRAINT FIXED HEIGHT FOR IMAGE VIEW -->
                                 <div class="col-span-5 relative group cursor-pointer flex flex-col items-stretch justify-center bg-slate-100 border border-slate-200 rounded-2xl p-1.5 shadow-sm min-h-[260px] overflow-hidden" onclick="openLightbox('sinh-hoat-vong-tron.jpeg', 'Sinh Hoạt Vòng Tròn')">
                                     <div class="absolute inset-0 bg-slate-900/10 rounded-2xl group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
-                                    <!-- FILE HÌNH ẢNH YÊU CẦU TỪ USER -->
                                     <img src="sinh-hoat-vong-tron.jpeg" alt="Sinh Hoạt Vòng Tròn" class="w-full h-full object-cover rounded-xl transition-all duration-300" onerror="handleImgError(this, 'sinh_hoat_vong_tron')"/>
                                     <div class="absolute bottom-3 right-3 bg-slate-900/80 backdrop-blur text-white px-2.5 py-1 rounded-md text-[9px] font-bold flex items-center gap-1.5 z-20 shadow">
                                         <i class="fa-solid fa-magnifying-glass-plus text-amber-500"></i> Xem ảnh lớn
@@ -409,90 +400,75 @@
                             </div>
                         </div>
 
-                        <!-- SLIDE 5: MORNING COMPETITIONS & TEAM BUILDING (LỊCH TRÌNH 4 CỘT) -->
+                        <!-- SLIDE 5: MORNING COMPETITIONS & TEAM BUILDING -->
                         <div class="slide" id="slide-5">
                             <div class="slide-header">
                                 <h2 class="slide-title">Hoạt Động Thi Đua & Team Building Sáng</h2>
                                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-dumbbell mr-1.5"></i>Thể Thao & Trí Tuệ</span>
                             </div>
                             <div class="flex-grow grid grid-cols-4 gap-4 items-stretch mt-1">
-                                <!-- Cột 1: Trò Chơi Thi Đua -->
+                                <!-- Cột 1 -->
                                 <div class="bg-white rounded-2xl border-t-4 border-amber-500 p-4 shadow-sm flex flex-col h-full interactive-card">
                                     <div class="flex justify-between items-center mb-2 shrink-0">
                                         <span class="bg-amber-100 text-amber-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">THI ĐUA</span>
                                         <span class="text-[10px] text-amber-700 font-bold"><i class="fa-regular fa-clock mr-1"></i> 08:00 - 09:30</span>
                                     </div>
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Trò Chơi Thi Đua</h3>
-                                    
-                                    <!-- Khung ảnh Thi Đua Xoay Vòng (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('tro-choi-thi-dua-1.jpg', '<i class=\'fa-solid fa-gamepad text-amber-500\'></i> Trò Chơi Thi Đua Xoay Vòng Giữa Các Khối')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
                                         <img src="tro-choi-thi-dua-1.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_dua_xoay_vong')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
-                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                            <span>Xem toàn màn hình</span>
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i> <span>Xem toàn màn hình</span>
                                         </div>
                                     </div>
-                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội sẽ tham gia trò chơi thi đua do các khối chuẩn bị. Thời lượng quy định: <span class="font-bold text-amber-600">20 phút/trò</span>.</p>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội tham gia trò chơi thi đua xoay vòng. Thời lượng quy định: <span class="font-bold text-amber-600">20 phút/trò</span>.</p>
                                     <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Khối Thêm Sức & Sống Đạo</div>
                                 </div>
-
-                                <!-- Cột 2: Thi Dựng Lều -->
+                                <!-- Cột 2 -->
                                 <div class="bg-white rounded-2xl border-t-4 border-blue-600 p-4 shadow-sm flex flex-col h-full interactive-card">
                                     <div class="flex justify-between items-center mb-2 shrink-0">
                                         <span class="bg-blue-100 text-blue-900 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">DỰNG LỀU</span>
                                         <span class="text-[10px] text-blue-900 font-bold"><i class="fa-regular fa-clock mr-1"></i> 09:30 - 09:45</span>
                                     </div>
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Dựng Lều Đội</h3>
-                                    
-                                    <!-- Khung ảnh Dựng Lều (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('thi-dung-leu.jpeg', '<i class=\'fa-solid fa-campground text-blue-500\'></i> Kỹ Thuật Dựng Lều Đội Khẩn Cấp')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
                                         <img src="thi-dung-leu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_dung_leu')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
-                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                            <span>Xem toàn màn hình</span>
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i> <span>Xem toàn màn hình</span>
                                         </div>
                                     </div>
-                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội nhanh chóng nhận dụng cụ và thi đua dựng lều khẩn cấp đạt chuẩn thẩm mỹ kỹ thuật của ban thi đua.</p>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội nhanh chóng nhận dụng cụ và thi đua dựng lều khẩn cấp đạt chuẩn kỹ thuật.</p>
                                     <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto"></div>
                                 </div>
-
-                                <!-- Cột 3: Team Building -->
+                                <!-- Cột 3 -->
                                 <div class="bg-white rounded-2xl border-t-4 border-emerald-500 p-4 shadow-sm flex flex-col h-full interactive-card">
                                     <div class="flex justify-between items-center mb-2 shrink-0">
                                         <span class="bg-emerald-100 text-emerald-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">VẬN ĐỘNG</span>
                                         <span class="text-[10px] text-emerald-700 font-bold"><i class="fa-regular fa-clock mr-1"></i> 09:45 - 10:45</span>
                                     </div>
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Team Building</h3>
-                                    
-                                    <!-- Khung ảnh Team Building (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('tro-choi-thi-dua.jpg', '<i class=\'fa-solid fa-users-rays text-emerald-500\'></i> Hoạt Động Vận Động Team Building Tập Thể')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
                                         <img src="tro-choi-thi-dua.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'team_building')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
-                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                            <span>Xem toàn màn hình</span>
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i> <span>Xem toàn màn hình</span>
                                         </div>
                                     </div>
-                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Tất cả hàng đội di chuyển tập trung về hội trường. Hòa mình tham gia trò chơi Team Building gắn kết lớn đầy sôi động.</p>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Tất cả hàng đội di chuyển tập trung tham gia trò chơi Team Building gắn kết lớn sôi động.</p>
                                     <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Ban Thi Đua</div>
                                 </div>
-
-                                <!-- Cột 4: Thi Nấu Ăn -->
+                                <!-- Cột 4 -->
                                 <div class="bg-white rounded-2xl border-t-4 border-red-500 p-4 shadow-sm flex flex-col h-full interactive-card">
                                     <div class="flex justify-between items-center mb-2 shrink-0">
                                         <span class="bg-red-100 text-red-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">NẤU ĂN</span>
                                         <span class="text-[10px] text-red-700 font-bold"><i class="fa-regular fa-clock mr-1"></i> 10:45 - 11:30</span>
                                     </div>
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Thi Nấu Ăn</h3>
-                                    
-                                    <!-- Khung ảnh Thi Nấu Ăn (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('thi-nau-an.jpeg', '<i class=\'fa-solid fa-fire-burner text-red-500\'></i> Hội Thi Nấu Ăn Dã Ngoại Tự Lập')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
                                         <img src="thi-nau-an.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_nau_an')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
-                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                            <span>Xem toàn màn hình</span>
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i> <span>Xem toàn màn hình</span>
                                         </div>
                                     </div>
-                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội tập trung chuẩn bị bếp lửa dã ngoại, thực hiện hội thi nấu ăn tự lập mang bản sắc đồng đội khéo léo.</p>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Các đội thực hiện hội thi nấu ăn tự lập mang bản sắc đồng đội khéo léo.</p>
                                     <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Ban Tổ Chức & Thi Đua</div>
                                 </div>
                             </div>
@@ -505,63 +481,52 @@
                                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest"><i class="fa-solid fa-sun mr-1.5"></i>Giờ Nghỉ Trưa & Tinh Thần</span>
                             </div>
                             <div class="flex-grow grid grid-cols-3 gap-4 items-stretch mt-1">
-                                <!-- Cột 1: Phút Viếng Chúa -->
+                                <!-- Cột 1 -->
                                 <div class="bg-white rounded-2xl border-t-4 border-blue-900 p-4 shadow-sm flex flex-col h-full interactive-card">
                                     <div class="flex justify-between items-center mb-2 shrink-0">
                                         <span class="bg-blue-100 text-blue-900 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">VIẾNG CHÚA</span>
                                         <span class="text-[10px] text-blue-900 font-bold"><i class="fa-regular fa-clock mr-1"></i> 11:30 - 12:00</span>
                                     </div>
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Viếng Chúa Thánh Thể</h3>
-                                    
-                                    <!-- Khung ảnh Viếng Chúa (DYNAMIC FULL HEIGHT) -->
                                     <div onclick="openLightbox('vieng-chua.jpeg', '<i class=\'fa-solid fa-monument text-amber-500\'></i> Phút Viếng Chúa Thánh Thiêng Lắng Đọng')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
                                         <img src="vieng-chua.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'vieng_chua')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
-                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                            <span>Xem toàn màn hình</span>
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i> <span>Xem toàn màn hình</span>
                                         </div>
                                     </div>
-                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Giờ lắng đọng tâm hồn viếng Chúa Giêsu Thánh Thể. Kết hợp công bố kết quả thi đua đợt 1 và bốc thăm thứ tự thi Dân Vũ.</p>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Giờ lắng đọng tâm hồn viếng Chúa Giêsu. Công bố kết quả thi đua đợt 1 và bốc thăm Dân Vũ.</p>
                                     <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Ban Phụng Vụ & Ban Tổ Chức</div>
                                 </div>
-
-                                <!-- Cột 2: Cơm Trưa Hàng Đội -->
+                                <!-- Cột 2 -->
                                 <div class="bg-white rounded-2xl border-t-4 border-amber-500 p-4 shadow-sm flex flex-col h-full interactive-card">
                                     <div class="flex justify-between items-center mb-2 shrink-0">
                                         <span class="bg-amber-100 text-amber-800 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">CƠM TRƯA</span>
                                         <span class="text-[10px] text-amber-700 font-bold"><i class="fa-regular fa-clock mr-1"></i> 12:00 - 13:30</span>
                                     </div>
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Cơm Trưa Hàng Đội</h3>
-                                    
-                                    <!-- Khung ảnh Cơm Trưa (DYNAMIC FULL HEIGHT) -->
-                                    <div onclick="openLightbox('com-trua-3.jpg', '<i class=\'fa-solid fa-fire-burner text-amber-500\'></i> Giờ Cơm Trưa Hàng Đội & Thưởng Thức Sản Phẩm Tự Nấu')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                    <div onclick="openLightbox('com-trua-3.jpg', '<i class=\'fa-solid fa-fire-burner text-amber-500\'></i> Giờ Cơm Trưa Hàng Đội')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
                                         <img src="com-trua-3.jpg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'com_trua')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
-                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                            <span>Xem toàn màn hình</span>
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i> <span>Xem toàn màn hình</span>
                                         </div>
                                     </div>
-                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Dùng cơm trưa dã ngoại bằng chính sản phẩm tự nấu tại hội thi buổi sáng, thu dọn vệ sinh cá nhân, nghỉ ngơi tĩnh dưỡng tại lều đội.</p>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Dùng cơm trưa dã ngoại bằng chính sản phẩm tự nấu, dọn vệ sinh và nghỉ ngơi tại lều đội.</p>
                                     <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Ban Hậu Cần & Đội Đồng Hành</div>
                                 </div>
-
-                                <!-- Cột 3: Hội Thi Dân Vũ I -->
+                                <!-- Cột 3 -->
                                 <div class="bg-white rounded-2xl border-t-4 border-blue-900 p-4 shadow-sm flex flex-col h-full interactive-card">
                                     <div class="flex justify-between items-center mb-2 shrink-0">
                                         <span class="bg-blue-100 text-blue-900 text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase">DÂN VŨ</span>
                                         <span class="text-[10px] text-blue-900 font-bold"><i class="fa-regular fa-clock mr-1"></i> 13:30 - 14:00</span>
                                     </div>
                                     <h3 class="font-serif font-bold text-xs text-slate-800 mb-2 uppercase shrink-0">Thi Dân Vũ</h3>
-                                    
-                                    <!-- Khung ảnh Dân Vũ (DYNAMIC FULL HEIGHT) -->
-                                    <div onclick="openLightbox('thi-dan-vu.jpeg', '<i class=\'fa-solid fa-music text-amber-500\'></i> Hội Thi Dân Vũ Sôi Động - Vũ Điệu Hiệp Hành')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
+                                    <div onclick="openLightbox('thi-dan-vu.jpeg', '<i class=\'fa-solid fa-music text-amber-500\'></i> Hội Thi Dân Vũ Sôi Động')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative">
                                         <img src="thi-dan-vu.jpeg" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'thi_dan_vu')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[9px] font-semibold gap-1">
-                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                                            <span>Xem toàn màn hình</span>
+                                            <i class="fa-solid fa-magnifying-glass-plus text-xs"></i> <span>Xem toàn màn hình</span>
                                         </div>
                                     </div>
-                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Khởi tranh tiết mục dân vũ tập thể đầy hứng khởi. Ngay sau đó, phổ biến thể lệ Trò Chơi Lớn buổi chiều và phát mật thư khởi động.</p>
+                                    <p class="text-[10px] text-slate-500 leading-relaxed mb-3 shrink-0">Khởi tranh tiết mục dân vũ tập thể đầy hứng khởi, sau đó phổ biến thể lệ Trò Chơi Lớn buổi chiều.</p>
                                     <div class="border-t pt-2 text-[8.5px] text-slate-400 font-bold uppercase text-center shrink-0 mt-auto">Ban Sinh Hoạt & Ban Thi Đua</div>
                                 </div>
                             </div>
@@ -585,7 +550,6 @@
                                     </div>
                                 </div>
                                 <div class="col-span-7 bg-white text-slate-900 rounded-2xl p-4 flex flex-col justify-between interactive-card relative group cursor-pointer" onclick="openLightbox('tro-choi-lon.jpeg', '<i class=\'fa-solid fa-mountain-sun text-amber-500\'></i> Hành Trình Đức Tin - Trò Chơi Lớn “Theo Bước Giêsu”')">
-                                    <!-- Khung ảnh Trò Chơi Lớn thực tế - TỰ ĐỘNG CHIẾM TRỌN CHIỀU CAO CON LẠI CỦA THẺ -->
                                     <div class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 relative flex items-center justify-center shadow-inner">
                                         <img src="tro-choi-lon.jpeg" alt="Trò Chơi Lớn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="handleImgError(this, 'tro_choi_lon')"/>
                                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[11px] font-semibold gap-1.5">
@@ -599,41 +563,42 @@
                                             <p class="text-[11px] text-slate-600 leading-tight mt-1">Mô hình gồm <span class="font-bold text-amber-600">6 Trạm Thách Thức</span> đan cài Kỹ Năng & Kiến Thức Kinh Thánh chuyên sâu.</p>
                                         </div>
                                         <div class="text-[10px] text-slate-500 font-bold uppercase border-l border-slate-300 pl-4 shrink-0 text-right">
-                                            Tổng Chỉ Huy:<br>
-                                            <span class="text-blue-900 font-extrabold">Ban Thi Đua</span>
+                                            Tổng Chỉ Huy:<br><span class="text-blue-900 font-extrabold">Ban Thi Đua</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- SLIDE 8: CAMP MAP & ZONING -->
+                        <!-- SLIDE 8: CAMP MAP & ZONING (Đã tối ưu min-h-0 cho Layout linh hoạt toàn vẹn) -->
                         <div class="slide" id="slide-8">
                             <div class="slide-header">
                                 <h2 class="slide-title">Bản Đồ Đất Trại & Định Vị 6 Trạm</h2>
                                 <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest flex items-center gap-1.5"><i class="fa-solid fa-map-location-dot"></i>sơ đồ trại hè.png</span>
                             </div>
-                            <div class="flex-grow grid grid-cols-12 gap-4 items-stretch mt-0.5">
-                                <div class="col-span-7 bg-slate-100 rounded-2xl border border-slate-300 shadow-inner relative overflow-hidden flex items-center justify-center p-1.5">
+                            <div class="flex-grow grid grid-cols-12 gap-4 items-stretch mt-0.5 min-h-0">
+                                <div class="col-span-7 bg-slate-100 rounded-2xl border border-slate-300 shadow-inner relative overflow-hidden flex items-center justify-center p-1.5 min-h-0">
                                     <img src="sơ đồ trại hè.png" id="camp-map-img" alt="Sơ đồ đất trại" class="object-contain max-h-full max-w-full rounded-xl transition-all duration-300" onerror="handleImgError(this, 'so_do_dat_trai')"/>
                                     <div id="map-hotspots-overlay" class="absolute inset-0 z-20 pointer-events-none">
                                         <div id="group-stations" class="absolute inset-0 pointer-events-none">
-                                            <!-- Ghịch mốc trạm ẩn danh bằng lá cờ vàng nhấp nháy 🚩 -->
-                                            <button onclick="showMapDetail('tram1')" class="absolute pointer-events-auto top-[32%] left-[60%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
-                                            <button onclick="showMapDetail('tram2')" class="absolute pointer-events-auto top-[78%] left-[16%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
-                                            <button onclick="showMapDetail('tram3')" class="absolute pointer-events-auto top-[48%] left-[28%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
-                                            <button onclick="showMapDetail('tram4')" class="absolute pointer-events-auto top-[25%] left-[82%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
-                                            <button onclick="showMapDetail('tram5')" class="absolute pointer-events-auto top-[71%] left-[46%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
-                                            <button onclick="showMapDetail('tram6')" class="absolute pointer-events-auto top-[34%] left-[39%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm Hành Trình Đức Tin">🚩</button>
+                                            <!-- Cờ vàng định vị Trạm -->
+                                            <button onclick="showMapDetail('tram1')" class="absolute pointer-events-auto top-[32%] left-[60%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm 1">🚩</button>
+                                            <button onclick="showMapDetail('tram2')" class="absolute pointer-events-auto top-[78%] left-[16%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm 2">🚩</button>
+                                            <button onclick="showMapDetail('tram3')" class="absolute pointer-events-auto top-[48%] left-[28%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm 3">🚩</button>
+                                            <button onclick="showMapDetail('tram4')" class="absolute pointer-events-auto top-[25%] left-[82%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm 4">🚩</button>
+                                            <button onclick="showMapDetail('tram5')" class="absolute pointer-events-auto top-[71%] left-[46%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm 5">🚩</button>
+                                            <button onclick="showMapDetail('tram6')" class="absolute pointer-events-auto top-[34%] left-[39%] w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-extrabold shadow-lg border-2 border-white map-pulse-amber hover:scale-125 transition-transform z-30" title="Trạm 6">🚩</button>
                                         </div>
                                         <div class="absolute top-[34.8%] left-[50.8%] transform -translate-x-1/2 bg-[#BCE8CD] px-1.5 py-0.5 rounded text-[10px] font-bold text-[#1E293B] pointer-events-none shadow-sm border border-[#A7DBB9]">Hội trường</div>
                                     </div>
                                 </div>
-                                <div class="col-span-5 flex flex-col bg-white rounded-2xl border border-slate-200 p-4 shadow-sm h-full overflow-hidden">
-                                    <div id="map-detail-card" class="h-full flex flex-col items-center justify-center text-center p-2">
-                                        <div class="text-4xl text-amber-400 mb-2"><i class="fa-solid fa-flag-checkered"></i></div>
-                                        <h4 class="font-bold text-xs text-amber-600 uppercase tracking-wide mb-1">Hành Trình 6 Trạm Đức Tin</h4>
-                                        <p class="text-[10px] text-slate-500 leading-relaxed">Nhấp chuột trực tiếp vào các mốc <b>Lá cờ vàng 🚩</b> trên bản đồ để bắt đầu giải mã số trạm, ý nghĩa linh thánh và ban phụ trách.</p>
+                                <div class="col-span-5 flex flex-col bg-white rounded-2xl border border-slate-200 p-4 shadow-sm h-full overflow-hidden min-h-0">
+                                    <div id="map-detail-card" class="h-full flex flex-col justify-between text-center min-h-0">
+                                        <div class="flex-grow flex flex-col items-center justify-center min-h-0">
+                                            <div class="text-4xl text-amber-400 mb-2"><i class="fa-solid fa-flag-checkered"></i></div>
+                                            <h4 class="font-bold text-xs text-amber-600 uppercase tracking-wide mb-1">Hành Trình 6 Trạm Đức Tin</h4>
+                                            <p class="text-[10px] text-slate-500 leading-relaxed">Nhấp chuột trực tiếp vào các mốc <b>Lá cờ vàng 🚩</b> trên bản đồ để bắt đầu giải mã số trạm, ý nghĩa linh thánh và ban phụ trách.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -826,35 +791,37 @@
         <p id="lightbox-caption" class="text-xs text-slate-400 mt-4 font-semibold tracking-wider flex items-center gap-2"></p>
     </div>
 
-    <!-- DIGITAL SHUFFLER MODAL (SLIDE 8) -->
+    <!-- DIGITAL SHUFFLER MODAL (CHỈNH SỬA TOÀN BỘ) -->
     <div id="shuffler-modal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4">
-        <div class="bg-slate-900 border-2 border-slate-700 p-6 sm:p-8 rounded-3xl max-w-2xl w-full shadow-2xl flex flex-col relative overflow-hidden">
+        <div class="bg-slate-900 border-2 border-slate-700 p-6 sm:p-8 rounded-3xl max-w-2xl w-full shadow-2xl flex flex-col relative overflow-hidden max-h-[95vh]">
+            
             <!-- Header Modal -->
-            <div class="text-center mb-5 z-10 border-b border-slate-800 pb-4">
-                <h3 class="text-amber-500 font-bold text-[10px] tracking-widest uppercase mb-2 flex items-center justify-center gap-2"><i class="fa-solid fa-bolt"></i> Hộp Trộn Nhân Sự Đích Tính</h3>
-                <h2 id="shuffler-station-name" class="font-serif text-lg sm:text-xl text-white font-bold uppercase tracking-wide">TRẠM ĐẤNG NGÔN SỨ...</h2>
+            <div class="text-center mb-4 sm:mb-5 z-10 border-b border-slate-800 pb-3 sm:pb-4 shrink-0">
+                <h3 class="text-amber-500 font-bold text-[10px] tracking-widest uppercase mb-1.5 flex items-center justify-center gap-2"><i class="fa-solid fa-bolt"></i> Hộp Trộn Nhân Sự Đích Tính</h3>
+                <h2 id="shuffler-station-name" class="font-serif text-base sm:text-lg md:text-xl text-white font-bold uppercase tracking-wide">TRẠM ĐẤNG NGÔN SỨ...</h2>
             </div>
 
-            <!-- Màn hình LED -->
-            <div class="bg-slate-950 border border-slate-800 w-full rounded-2xl p-6 mb-5 relative flex flex-col items-center justify-center shadow-inner z-10 min-h-[110px]">
-                <div id="shuffler-display" class="shuffler-text text-amber-500 text-xl sm:text-2xl text-center mt-1">SẴN SÀNG QUAY</div>
-                <div id="shuffler-subtext" class="text-[9px] text-slate-500 font-bold tracking-widest uppercase mt-2 text-center">BẤM NÚT TRỘN NGẪU NHIÊN ĐỂ KHỞI ĐỘNG</div>
+            <!-- Màn hình LED Cuộn Tên -->
+            <div class="bg-slate-950 border border-slate-800 w-full rounded-2xl p-4 sm:p-6 mb-4 sm:mb-5 relative flex flex-col items-center justify-center shadow-inner z-10 min-h-[90px] shrink-0">
+                <div id="shuffler-display" class="shuffler-text text-amber-500 text-lg sm:text-xl md:text-2xl text-center mt-1">SẴN SÀNG QUAY</div>
+                <div id="shuffler-subtext" class="text-[8px] sm:text-[9px] text-slate-500 font-bold tracking-widest uppercase mt-2 text-center">BẤM NÚT TRỘN NGẪU NHIÊN ĐỂ KHỞI ĐỘNG</div>
             </div>
 
-            <!-- Lưới hiển thị Thẻ Nhân Sự -->
-            <div class="w-full z-10 mb-6">
-                <h4 class="text-[10px] text-slate-400 font-bold uppercase mb-3 flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-500"></i> Nhân sự dự thuộc về trạm này:</h4>
-                <div id="modal-personnel-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Lưới hiển thị Thẻ Nhân Sự (Khóa/Mở) -->
+            <div class="w-full z-10 mb-4 sm:mb-6 overflow-y-auto flex-grow pr-1">
+                <h4 class="text-[10px] text-slate-400 font-bold uppercase mb-2 sm:mb-3 flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-500"></i> Nhân sự dự thuộc về trạm này:</h4>
+                <div id="modal-personnel-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                     <!-- Được đổ dữ liệu bằng JS -->
                 </div>
             </div>
 
-            <!-- Bảng điều khiển -->
-            <div class="w-full flex flex-wrap sm:flex-nowrap gap-3 z-10 justify-center">
-                <button onclick="startShuffleRevealAll()" id="btn-start-shuffle" class="flex-1 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)] flex items-center justify-center gap-2"><i class="fa-solid fa-shuffle"></i> Trộn Ngẫu Nhiên</button>
-                <button onclick="instantRevealAll()" id="btn-instant-reveal" class="flex-1 py-3 bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border border-slate-700 hover:border-emerald-500"><i class="fa-solid fa-bolt"></i> Hiện Tất Cả</button>
-                <button onclick="closeShufflerModal()" class="py-3 px-6 bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border border-slate-700 hover:border-rose-500">Đóng</button>
+            <!-- Bảng điều khiển Modal -->
+            <div class="w-full flex flex-wrap sm:flex-nowrap gap-2 sm:gap-3 z-10 justify-center shrink-0">
+                <button onclick="startShuffleRevealAll()" id="btn-start-shuffle" class="flex-1 py-2.5 sm:py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-[11px] sm:text-xs font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)] flex items-center justify-center gap-1.5"><i class="fa-solid fa-shuffle"></i> Trộn Ngẫu Nhiên</button>
+                <button onclick="instantRevealAll()" id="btn-instant-reveal" class="flex-1 py-2.5 sm:py-3 bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 rounded-xl text-[11px] sm:text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-slate-700 hover:border-emerald-500"><i class="fa-solid fa-bolt"></i> Hiện Tất Cả</button>
+                <button onclick="closeShufflerModal()" class="py-2.5 sm:py-3 px-4 sm:px-6 bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white rounded-xl text-[11px] sm:text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-slate-700 hover:border-rose-500">Đóng</button>
             </div>
+
             <!-- Hiệu ứng pháo hoa -->
             <div id="confetti-container" class="absolute inset-0 pointer-events-none z-0"></div>
         </div>
@@ -889,9 +856,9 @@
         const mapLocationsInfo = {
             tram1: { title: "Trạm 1: Đấng Ngôn Sứ ISAIA", location: "Đối diện hội trường lớn", image: "tram1.jpg", personnel: [{ name: "Teresa Nguyễn Ánh Duyên", role: "Trạm Trưởng" }, { name: "Maria Nguyễn Trần Thuỳ Quyên", role: "Trạm Phó" }, { name: "Anna Võ Trần Yến Thi", role: "Hỗ Trợ" }, { name: "Giuse Trần Đăng Khoa", role: "Hỗ Trợ" }] },
             tram2: { title: "Trạm 2: Đấng Ngôn Sứ GIÊ-RÊ-MI-A", location: "Chỗ cây xanh bóng mát", image: "tram2.jpg", personnel: [{ name: "Maria Nguyễn Thị Vân", role: "Trạm Trưởng" }, { name: "Giuse Hồ Thanh Nghĩa", role: "Trạm Phó" }, { name: "Anna Nguyễn Thị Thanh Tâm", role: "Hỗ Trợ" }, { name: "Maria Trần Thiên An", role: "Hỗ Trợ" }] },
-            tram3: { title: "Trạm 3: Đấng Ngôn Sứ ÊLIA", location: "Bên cạnh khu vực đất trại", image: "tram3.jpg", personnel: [{ name: "Giuse Trần Ngọc Đan", role: "Trạm Trưởng" }, { name: "Đaminh Đặng Vũ Gia Phúc", role: "Trạm Phó" }, { name: "Maria Nguyễn Phạm Bảo Thy", role: "Hỗ Trợ" }, { name: "Anna Nguyễn Thị Quỳnh Như", role: "Hỗ Trợ" }] },
+            tram3: { title: "Trạm 3: Đấng Ngôn Sứ ÊLIA", location: "Bên cạnh khu vực đất trại (Tượng Chúa cầu nguyện)", image: "tram3.jpg", personnel: [{ name: "Giuse Trần Ngọc Đan", role: "Trạm Trưởng" }, { name: "Đaminh Đặng Vũ Gia Phúc", role: "Trạm Phó" }, { name: "Maria Nguyễn Phạm Bảo Thy", role: "Hỗ Trợ" }, { name: "Anna Nguyễn Thị Quỳnh Như", role: "Hỗ Trợ" }] },
             tram4: { title: "Trạm 4: Đấng Ngôn Sứ ĐA-NI-EN", location: "Dưới chân đài Tượng Đức Mẹ", image: "tram4.jpg", personnel: [{ name: "Giuse Vũ Quốc Huy", role: "Trạm Trưởng" }, { name: "Maria Nguyễn Thị Ngọc Chi", role: "Trạm Phó" }, { name: "Trưởng Thy", role: "Hỗ Trợ" }, { name: "Giuse Lê Minh Quân", role: "Hỗ Trợ" }] },
-            tram5: { title: "Trạm 5: Đấng Ngôn Sứ ÊZÊKIEL", location: "Bên trái sân banh sinh hoạt", image: "tram5.jpg", personnel: [{ name: "Vinhsơn Vũ Văn Lâm", role: "Trạm Trưởng" }, { name: "Vinhsơn Trần Nhật Hào", role: "Trạm Phó" }, { name: "Maria Bùi Ngọc Quỳnh Như", role: "Hỗ Trợ" }, { name: "Monica Vũ Thị Thuỳ Linh", role: "Hỗ Trợ" }] },
+            tram5: { title: "Trạm 5: Đấng Ngôn Sứ ÊZÊKIEL", location: "Bên trái sân banh sinh hoạt (Tượng Thánh Biển Đức)", image: "tram5.jpg", personnel: [{ name: "Vinhsơn Vũ Văn Lâm", role: "Trạm Trưởng" }, { name: "Vinhsơn Trần Nhật Hào", role: "Trạm Phó" }, { name: "Maria Bùi Ngọc Quỳnh Như", role: "Hỗ Trợ" }, { name: "Monica Vũ Thị Thuỳ Linh", role: "Hỗ Trợ" }] },
             tram6: { title: "Trạm 6: Đấng Ngôn Sứ GIÔNA", location: "Bên hông nhà nguyện tĩnh lặng", image: "tram6.jpg", personnel: [{ name: "Giuse Phạm Bùi Tuấn Vĩ", role: "Trạm Trưởng" }, { name: "Anna Ngô Thị Hương Loan", role: "Trạm Phó" }, { name: "Têrêsa Đỗ Hoàng Cẩm Ly", role: "Hỗ Trợ" }, { name: "Phêrô Trương Ngọc Đăng Khoa", role: "Hỗ Trợ" }] }
         };
 
@@ -961,51 +928,56 @@
             const caption = document.getElementById('lightbox-caption');
             img.src = src;
             img.onerror = function() {
-                this.src = 'https://placehold.co/1280x720/1e293b/ffffff?text=Anh+Thuc+Dia+Chua+Tai+Len';
+                this.src = 'https://placehold.co/1280x720/1e293b/ffffff?text=Anh+Thuc+Dia';
             };
             caption.innerHTML = captionHTML || '';
             lb.classList.remove('hidden');
             setTimeout(() => lb.classList.add('opacity-100'), 10);
         }
+        
         function closeLightbox() {
             const lb = document.getElementById('global-lightbox');
             lb.classList.remove('opacity-100');
             setTimeout(() => lb.classList.add('hidden'), 300);
         }
 
+        // TỐI ƯU CỰC MẠNH: THẺ HIỂN THỊ CHỈ 1 NÚT VÀ ẢNH KHÔNG ĐÈ NÚT
         function showMapDetail(stationKey) {
             const data = mapLocationsInfo[stationKey];
             activeStationKey = stationKey;
-            const isRevealed = revealedStations[stationKey] === true;
-
-            // Lọc bỏ số thứ tự
+            
+            // Lọc số thứ tự
             const displayTitle = data.title.replace(/Trạm \d+:/g, "Trạm:");
 
             const card = document.getElementById('map-detail-card');
-            card.className = "w-full h-full text-left flex flex-col justify-between";
+            
+            // Xóa hết class cũ, thiết lập CSS chặn phình to (min-h-0)
+            card.className = "w-full h-full text-left flex flex-col justify-between min-h-0";
+            
             card.innerHTML = `
                 <div class="flex flex-col flex-grow min-h-0">
-                    <h3 class="font-serif font-extrabold text-[12px] text-slate-900 uppercase tracking-tight shrink-0 mb-1">${displayTitle}</h3>
+                    <h3 class="font-serif font-extrabold text-[12px] sm:text-[14px] text-slate-900 uppercase tracking-tight shrink-0 mb-1">${displayTitle}</h3>
                     <p class="text-[12px] sm:text-[14px] font-bold text-slate-900 mb-2.5 flex items-center gap-1.5 shrink-0"><i class="fa-solid fa-location-dot text-amber-500 text-[14px]"></i> Vị trí: <span class="text-slate-600 font-semibold">${data.location}</span></p>
                     
-                    <!-- ẢNH ĐƯỢC CHIA TỶ LỆ CHIỀU CAO FLEX-GROW NHƯNG KHÔNG ĐÈ XUỐNG -->
-                    <div onclick="openLightbox('${data.image}', '${displayTitle}')" class="w-full flex-grow h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 mb-3 flex items-center justify-center cursor-pointer group/img relative min-h-[110px]">
-                        <img src="${data.image}" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, '${stationKey}')">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] font-semibold gap-1">
+                    <!-- ẢNH ĐƯỢC THIẾT LẬP TUYỆT ĐỐI BÊN TRONG KHUNG FLEX ĐỂ KHÔNG BAO GIỜ TRÀN -->
+                    <div onclick="openLightbox('${data.image}', '${displayTitle}')" class="w-full flex-grow min-h-0 bg-slate-100 rounded-xl overflow-hidden border border-slate-200 flex items-center justify-center cursor-pointer group/img relative">
+                        <img src="${data.image}" class="absolute inset-0 w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300" onerror="handleImgError(this, '${stationKey}')">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] font-semibold gap-1 z-10">
                             <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
                             <span>Xem toàn màn hình</span>
                         </div>
                     </div>
                 </div>
-                <!-- NÚT BẤM DUY NHẤT -->
-                <div class="shrink-0 mt-auto">
-                    <button onclick="openShufflerModal('${stationKey}')" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs sm:text-sm font-extrabold transition-all shadow-[0_4px_12px_rgba(245,158,11,0.2)] flex items-center justify-center gap-2 uppercase tracking-wide">
+                <!-- 1 NÚT DUY NHẤT Ở ĐÁY: Không bao giờ bị ép mất nhờ shrink-0 -->
+                <div class="shrink-0 mt-3 sm:mt-4 border-t border-slate-100 pt-3">
+                    <button onclick="openShufflerModal('${stationKey}')" class="w-full py-2.5 sm:py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all shadow-[0_4px_12px_rgba(245,158,11,0.3)] flex items-center justify-center gap-2 uppercase tracking-wide">
                         <i class="fa-solid fa-users-viewfinder"></i> Danh sách GLV đứng trạm
                     </button>
                 </div>
             `;
         }
 
+        // --- CÁC HÀM XỬ LÝ MODAL VÀ NHÂN SỰ ---
         function renderPersonnelHTML(personnel, isRevealed) {
             return personnel.map(p => {
                 const initials = isRevealed ? p.name.split(' ').slice(-2).map(n=>n[0]).join('') : '?';
@@ -1013,25 +985,25 @@
                 
                 if (isRevealed) {
                     return `
-                        <div class="unlocked-card bg-white border-2 border-emerald-500 p-2 rounded-xl flex items-center gap-3 shadow-md w-full">
-                            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 border border-amber-300 flex items-center justify-center text-[10px] font-black shrink-0">
+                        <div class="unlocked-card bg-white border-2 border-emerald-500 p-2 sm:p-2.5 rounded-xl flex items-center gap-2 sm:gap-3 shadow-md w-full">
+                            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-100 text-amber-700 border border-amber-300 flex items-center justify-center text-[9px] sm:text-[10px] font-black shrink-0">
                                 ${initials}
                             </div>
                             <div class="overflow-hidden text-left flex-grow">
-                                <h5 class="text-[11px] sm:text-xs font-extrabold text-slate-800 truncate w-full">${displayName}</h5>
-                                <span class="text-[8.5px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full mt-1 inline-block">${p.role}</span>
+                                <h5 class="text-[10px] sm:text-[11px] font-extrabold text-slate-800 truncate w-full">${displayName}</h5>
+                                <span class="text-[8px] sm:text-[8.5px] font-bold text-emerald-700 bg-emerald-100 px-1.5 sm:px-2 py-0.5 rounded-full mt-0.5 sm:mt-1 inline-block">${p.role}</span>
                             </div>
                         </div>
                     `;
                 } else {
                     return `
-                        <div class="locked-card bg-slate-800/80 border border-slate-700 p-2 rounded-xl flex items-center gap-3 w-full">
-                            <div class="w-8 h-8 rounded-full bg-slate-700 text-slate-500 flex items-center justify-center text-[10px] font-bold shrink-0">
+                        <div class="locked-card bg-slate-800/80 border border-slate-700 p-2 sm:p-2.5 rounded-xl flex items-center gap-2 sm:gap-3 w-full">
+                            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 text-slate-500 flex items-center justify-center text-[9px] sm:text-[10px] font-bold shrink-0">
                                 <i class="fa-solid fa-lock"></i>
                             </div>
                             <div class="overflow-hidden text-left flex-grow">
-                                <h5 class="text-[11px] sm:text-xs font-bold text-slate-500 truncate w-full">${displayName}</h5>
-                                <span class="text-[8.5px] font-semibold text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full mt-1 inline-block">${p.role}</span>
+                                <h5 class="text-[10px] sm:text-[11px] font-bold text-slate-500 truncate w-full">${displayName}</h5>
+                                <span class="text-[8px] sm:text-[8.5px] font-semibold text-slate-500 bg-slate-800 px-1.5 sm:px-2 py-0.5 rounded-full mt-0.5 sm:mt-1 inline-block">${p.role}</span>
                             </div>
                         </div>
                     `;
@@ -1040,24 +1012,26 @@
         }
 
         function openShufflerModal(stationKey) {
-            activeStationKey = stationKey;
-            const data = mapLocationsInfo[stationKey];
-            const isRevealed = revealedStations[stationKey] === true;
+            // Nút bấm này truyền tham số an toàn vì thẻ đã được render bằng JS
+            activeStationKey = stationKey || activeStationKey; 
+            const data = mapLocationsInfo[activeStationKey];
+            const isRevealed = revealedStations[activeStationKey] === true;
             
             const m = document.getElementById('shuffler-modal');
             
-            document.getElementById('shuffler-station-name').innerText = data.title;
+            // Chuẩn hóa tên trạm cho Modal
+            document.getElementById('shuffler-station-name').innerText = data.title.replace(/Trạm \d+:/g, "TRẠM:");
             
             const display = document.getElementById('shuffler-display');
             const subtext = document.getElementById('shuffler-subtext');
 
             if (isRevealed) {
                 display.innerText = "ĐÃ HOÀN TẤT TRỘN";
-                display.className = "shuffler-text text-center text-emerald-400 text-xl sm:text-2xl mt-1";
+                display.className = "shuffler-text text-center text-emerald-400 text-lg sm:text-xl md:text-2xl mt-1";
                 subtext.innerText = "DANH SÁCH BAN TRƯỞNG TRẠM ĐÍCH TÍNH";
             } else {
                 display.innerText = "SẴN SÀNG QUAY";
-                display.className = "shuffler-text text-center text-amber-500 text-xl sm:text-2xl mt-1";
+                display.className = "shuffler-text text-center text-amber-500 text-lg sm:text-xl md:text-2xl mt-1";
                 subtext.innerText = "BẤM NÚT TRỘN NGẪU NHIÊN ĐỂ KHỞI ĐỘNG";
             }
             
@@ -1082,11 +1056,11 @@
             const data = mapLocationsInfo[activeStationKey];
             
             const display = document.getElementById('shuffler-display');
-            display.innerText = "ĐÃ HOÀN TẤT TRỘN";
+            display.innerText = "ĐÃ GIẢI MÃ THÀNH CÔNG";
             display.classList.remove('text-amber-500');
             display.classList.add('text-emerald-400');
             
-            document.getElementById('shuffler-subtext').innerText = "DANH SÁCH BAN TRƯỞNG TRẠM ĐÍCH TÍNH";
+            document.getElementById('shuffler-subtext').innerText = "DANH SÁCH BAN TRƯỞNG TRẠM CHÍNH THỨC";
             
             document.getElementById('btn-start-shuffle').disabled = true;
             document.getElementById('btn-instant-reveal').disabled = true;
@@ -1099,18 +1073,20 @@
             if (!activeStationKey) return;
             document.getElementById('btn-start-shuffle').disabled = true;
             document.getElementById('btn-instant-reveal').disabled = true;
+            
             const display = document.getElementById('shuffler-display');
             const subtext = document.getElementById('shuffler-subtext');
             
             display.classList.remove('text-emerald-400');
             display.classList.add('text-amber-500');
-            subtext.innerText = "ĐANG TÌM KIẾM NHÂN SỰ ĐÍCH TÍNH...";
+            subtext.innerText = "ĐANG KẾT NỐI DỮ LIỆU NHÂN SỰ ĐÍCH TÍNH...";
             
             let speed = 25;
             let iterations = 0;
             const maxIterations = 40;
 
             function shuffleStep() {
+                // Quay random một tên bất kỳ trong mảng danh sách tổng
                 display.innerText = allPersonnelNames[Math.floor(Math.random() * allPersonnelNames.length)];
                 iterations++;
                 if (iterations < maxIterations) {
@@ -1127,7 +1103,7 @@
             const box = document.getElementById('confetti-container');
             box.innerHTML = '';
             const colors = ['#F59E0B', '#3B82F6', '#10B981', '#EF4444'];
-            for (let i = 0; i < 45; i++) {
+            for (let i = 0; i < 55; i++) {
                 const c = document.createElement('div');
                 c.className = 'confetti-piece';
                 c.style.left = `${Math.random() * 100}%`;
